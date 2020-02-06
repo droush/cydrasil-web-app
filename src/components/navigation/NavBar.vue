@@ -3,10 +3,11 @@
     <v-app-bar
       app
       color="green"
+      clipped-left
     >
       <v-app-bar-nav-icon
       color="white"
-      @click="drawer = !drawer" />
+      @click=collapseDrawer />
 
       <div class="d-flex align-center">
         <v-btn
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 import SignInButton from '@/components/navigation/SignInButton'
 
 export default {
@@ -36,7 +38,10 @@ export default {
 
   components: {
     SignInButton
-  }
+  },
+
+  computed: mapGetters(['getDrawerStatus']),
+  methods: mapMutations(['collapseDrawer'])
 
 }
 </script>

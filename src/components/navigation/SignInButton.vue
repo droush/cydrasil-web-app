@@ -1,7 +1,6 @@
 <template>
     <v-btn
         to="/login"
-        target="_blank"
         text
         color="white"
     >
