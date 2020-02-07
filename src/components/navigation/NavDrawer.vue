@@ -37,7 +37,7 @@ export default {
     return {
       items: [
         { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'Tree', icon: 'mdi-file-tree' },
+        { title: 'Tree', icon: 'mdi-pine-tree' },
         { title: 'Database', icon: 'mdi-database' },
         { title: 'Place Sequences', icon: 'mdi-string-lights' },
         { title: 'Submit Sequences', icon: 'mdi-pencil' },

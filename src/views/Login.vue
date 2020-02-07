@@ -1,17 +1,19 @@
 <template>
-  <v-content>
-    <TestCompPleaseIgnore />
-  </v-content>
+    <v-container>
+        <v-row
+        class="mt-12"
+        >
+            <v-col align-self="center">
+            <amplify-authenticator v-bind:authConfig="authConfig"></amplify-authenticator>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import TestCompPleaseIgnore from '@/components/TestCompPleaseIgnore.vue'
 
 export default {
-  name: 'home',
-  components: {
-    TestCompPleaseIgnore
-  }
+
 }
 </script>

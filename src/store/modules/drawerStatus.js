@@ -1,6 +1,6 @@
 const state = {
   drawerStatus: true,
-  miniStatus: true
+  miniStatus: false
 }
 
 const getters = {

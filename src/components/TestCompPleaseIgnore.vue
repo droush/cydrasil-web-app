@@ -1,15 +1,5 @@
 <template>
-  <v-row>
-      <v-col>
-          <v-card>
-              <blockquote
-              class="blockquote"
-              >
-              Test Component Please Ignore!
-              </blockquote>
-          </v-card>
-      </v-col>
-  </v-row>
+    <h1> Test Component Please Ignore! </h1>
 </template>
 
 <script>
