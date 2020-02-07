@@ -5,12 +5,14 @@
     <NavDrawer />
 
     <v-content>
-      <router-view />
+      <v-container fluid>
+        <router-view />
+      </v-container>
     </v-content>
 
       <v-footer
-        color="green"
         app
+        color="green"
       >
         <span class="white--text">&copy; 2019</span>
      </v-footer>

@@ -11,7 +11,7 @@
 
       <div class="d-flex align-center">
         <v-btn
-          to="/home"
+          to="/"
           text
           color="white"
         >

@@ -37,8 +37,13 @@ export default {
     return {
       items: [
         { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'My Account', icon: 'mdi-account' },
-        { title: 'Users', icon: 'mdi-account-group-outline' }
+        { title: 'Tree', icon: 'mdi-file-tree' },
+        { title: 'Database', icon: 'mdi-database' },
+        { title: 'Place Sequences', icon: 'mdi-string-lights' },
+        { title: 'Submit Sequences', icon: 'mdi-pencil' },
+        { title: 'Support', icon: 'mdi-lifebuoy' },
+        { title: 'About', icon: 'mdi-information' },
+        { title: 'Contact Us', icon: 'mdi-email' }
       ]
     }
   }
