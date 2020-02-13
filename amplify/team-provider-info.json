@@ -1,15 +1,20 @@
 {
     "sandbox": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-cydrasil-web-app-sandbox-143441-authRole",
-            "UnauthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-sandbox-143441-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-sandbox-143441-authRole",
+            "AuthRoleName": "amplify-cydrasil-web-app-sandbox-161256-authRole",
+            "UnauthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-sandbox-161256-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-sandbox-161256-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-cydrasil-web-app-sandbox-143441-deployment",
-            "UnauthRoleName": "amplify-cydrasil-web-app-sandbox-143441-unauthRole",
-            "StackName": "amplify-cydrasil-web-app-sandbox-143441",
-            "StackId": "arn:aws:cloudformation:us-west-2:674066163083:stack/amplify-cydrasil-web-app-sandbox-143441/7c8e6e10-4928-11ea-a80b-06e35a67ba22",
-            "AmplifyAppId": "d8h8bpsy9gvm2"
+            "DeploymentBucketName": "amplify-cydrasil-web-app-sandbox-161256-deployment",
+            "UnauthRoleName": "amplify-cydrasil-web-app-sandbox-161256-unauthRole",
+            "StackName": "amplify-cydrasil-web-app-sandbox-161256",
+            "StackId": "arn:aws:cloudformation:us-west-2:674066163083:stack/amplify-cydrasil-web-app-sandbox-161256/349c7c40-4ded-11ea-a01c-027d9accbf80",
+            "AmplifyAppId": "d3pr44q5shid0j"
+        },
+        "categories": {
+            "auth": {
+                "cydrasilwebapp44a12dba": {}
+            }
         }
     }
 }
