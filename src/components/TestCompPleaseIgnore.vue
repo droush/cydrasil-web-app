@@ -3,8 +3,23 @@
 </template>
 
 <script>
-export default {
+import { mapActions } from 'vuex'
+import { AmplifyEventBus } from 'aws-amplify-vue'
 
+export default {
+  created () {
+    this.findUserName()
+
+    AmplifyEventBus.$on('authState', info => {
+      if (info === 'signedIn') {
+        this.findUserName()
+      } else {
+        this.findUserName()
+      }
+    })
+  },
+
+  methods: mapActions(['findUserName'])
 }
 </script>
 

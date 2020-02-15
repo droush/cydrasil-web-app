@@ -22,7 +22,8 @@
 
       <v-spacer></v-spacer>
 
-      <SignInButton/>
+      <SignInButton v-if=!getLoggedInStatus />
+      <ProfileMenu v-if=getLoggedInStatus />
 
     </v-app-bar>
 
@@ -31,16 +32,18 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import SignInButton from '@/components/navigation/SignInButton'
+import ProfileMenu from '@/components/navigation/ProfileMenu'
 
 export default {
 
   name: 'App',
 
   components: {
-    SignInButton
+    SignInButton,
+    ProfileMenu
   },
 
-  computed: mapGetters(['getDrawerStatus']),
+  computed: mapGetters(['getLoggedInStatus']),
   methods: mapMutations(['collapseDrawer'])
 
 }
