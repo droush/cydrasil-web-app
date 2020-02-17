@@ -10,7 +10,7 @@
 
       <v-footer
         app
-        color="green"
+        color="grey"
       >
         <span class="white--text">&copy; 2019 Daniel Roush</span>
      </v-footer>
@@ -29,12 +29,8 @@ export default {
     NavBar,
     NavDrawer,
     ...components
-  },
-
-  data: function () {
-    return ({
-    })
   }
+
 }
 </script>
 
@@ -42,7 +38,7 @@ export default {
 :root {
 
   /* Colors */
-  --amazonOrange: #4CAF50; /* Redefined to material green */
+  --amazonOrange: #424242; /* Redefined to material green */
   --lightAmazonOrange: #FFAC31;
   --darkAmazonOrange: #E88B01;
   --squidInk: #232F3E;

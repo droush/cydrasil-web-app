@@ -11,7 +11,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn
-          color="green"
+          color="grey darken-3"
           dark
           depressed=true
           v-on="on"

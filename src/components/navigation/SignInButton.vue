@@ -2,7 +2,7 @@
     <v-btn
         to="/login"
         text
-        color="white"
+        color="grey darken-3"
     >
 
     <v-icon>mdi-account-circle-outline</v-icon>

@@ -1,24 +1,26 @@
 <template>
+<!-- Color scheme for logo is as follows -->
+<!-- Dark Grey is  grey darken-3 #424242-->
+<!-- Yellow for logo is amber #FFC107 -->
 
     <v-app-bar
       app
-      color="green"
+      color="grey"
       clipped-left
     >
       <v-app-bar-nav-icon
-      color="white"
+      color="grey darken-3"
       @click=collapseDrawer />
-
-      <div class="d-flex align-center">
-        <v-btn
-          to="/"
-          text
-          color="white"
+      <router-link to="/">
+        <v-img
+        class="mx-2"
+        src="@/assets/cydrasil-logo-with-text.png"
+        max-height="40"
+        max-width="130"
+        contain
         >
-          <span>Cydrasil</span>
-        </v-btn>
-
-      </div>
+        </v-img>
+      </router-link>
 
       <v-spacer></v-spacer>
 

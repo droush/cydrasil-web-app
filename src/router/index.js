@@ -2,8 +2,18 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
+import PlaceSequences from '@/views/PlaceSequences.vue'
+import store from '@/store'
 
 Vue.use(VueRouter)
+
+function guard (to, from, next) {
+  if (store.state.loggedIn) {
+    next() // allow to enter route
+  } else {
+    next('/login') // go to '/login';
+  }
+}
 
 const routes = [
   {
@@ -16,6 +26,13 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+
+  {
+    path: '/place',
+    beforeEnter: guard,
+    name: 'place',
+    component: PlaceSequences
   }
 ]
 

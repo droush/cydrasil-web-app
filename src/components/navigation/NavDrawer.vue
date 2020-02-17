@@ -7,19 +7,22 @@
       clipped
     >
       <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
+        <v-list-item-group>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            :to="item.route"
+            exact
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
 
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -36,12 +39,10 @@ export default {
   data () {
     return {
       items: [
-        { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'Tree', icon: 'mdi-pine-tree' },
-        { title: 'Database', icon: 'mdi-database' },
-        { title: 'Place Sequences', icon: 'mdi-string-lights' },
+        { title: 'Home', icon: 'mdi-home-city', route: '/' },
+        { title: 'Database Details', icon: 'mdi-pine-tree' },
+        { title: 'Place Sequences', icon: 'mdi-string-lights', route: '/place' },
         { title: 'Submit Sequences', icon: 'mdi-pencil' },
-        { title: 'Support', icon: 'mdi-lifebuoy' },
         { title: 'About', icon: 'mdi-information' },
         { title: 'Contact Us', icon: 'mdi-email' }
       ]
