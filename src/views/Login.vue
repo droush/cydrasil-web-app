@@ -21,7 +21,7 @@ export default {
     return {
       authConfig: {
         signUpConfig: {
-          header: 'My Customized Sign Up',
+          header: 'Please Create an Account to use Cydrasil',
           hideAllDefaults: true,
           defaultCountryCode: '1',
           signUpFields: [
