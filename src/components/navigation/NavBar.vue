@@ -2,6 +2,7 @@
 <!-- Color scheme for logo is as follows -->
 <!-- Dark Grey is  grey darken-3 #424242-->
 <!-- Yellow for logo is amber #FFC107 -->
+<!-- Grey for Others is grey #9E9E9E -->
 
     <v-app-bar
       app

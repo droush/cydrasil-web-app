@@ -1,18 +1,18 @@
 <template>
   <v-content>
       <h1> PLACE SEQUENCES </h1>
-    <TestCompPleaseIgnore />
+    <PlacementForm />
   </v-content>
 </template>
 
 <script>
 // @ is an alias to /src
-import TestCompPleaseIgnore from '@/components/TestCompPleaseIgnore.vue'
+import PlacementForm from '@/components/PlacementForm.vue'
 
 export default {
-  name: 'home',
+  name: 'place',
   components: {
-    TestCompPleaseIgnore
+    PlacementForm
   }
 }
 </script>

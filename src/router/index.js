@@ -8,7 +8,7 @@ import store from '@/store'
 Vue.use(VueRouter)
 
 function guard (to, from, next) {
-  if (store.state.loggedIn) {
+  if (store.state.loginStatus.loggedIn) {
     next() // allow to enter route
   } else {
     next('/login') // go to '/login';
