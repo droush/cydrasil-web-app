@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import PlaceSequences from '@/views/PlaceSequences.vue'
+import MyPlacements from '@/views/MyPlacements.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -33,6 +34,13 @@ const routes = [
     beforeEnter: guard,
     name: 'place',
     component: PlaceSequences
+  },
+
+  {
+    path: '/MyPlacements',
+    beforeEnter: guard,
+    name: 'MyPlacements',
+    component: MyPlacements
   }
 ]
 

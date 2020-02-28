@@ -3,11 +3,9 @@
 
     <NavBar />
     <NavDrawer />
-
     <v-content>
       <router-view />
     </v-content>
-
       <v-footer
         app
         color="grey"
@@ -18,18 +16,33 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { AmplifyEventBus, components } from 'aws-amplify-vue'
 import NavBar from './components/navigation/NavBar'
 import NavDrawer from '@/components/navigation/NavDrawer'
-import { components } from 'aws-amplify-vue'
 
 export default {
   name: 'App',
+
+  created () {
+    this.findUserName()
+
+    AmplifyEventBus.$on('authState', info => {
+      if (info === 'signedIn') {
+        this.findUserName()
+      } else {
+        this.findUserName()
+      }
+    })
+  },
 
   components: {
     NavBar,
     NavDrawer,
     ...components
-  }
+  },
+
+  methods: mapActions(['findUserName'])
 
 }
 </script>

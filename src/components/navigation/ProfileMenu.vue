@@ -23,6 +23,8 @@
         <v-list-item
           v-for="(item, index) in items"
           :key="index"
+          :to="item.route"
+          exact
         >
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
@@ -39,7 +41,7 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     items: [
-      { title: 'My Placements' },
+      { title: 'My Placements', route: '/MyPlacements' },
       { title: 'Settings' }
     ],
     disabled: false,

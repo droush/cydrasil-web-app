@@ -1,6 +1,6 @@
 <template>
       <v-btn
-        class="grey--text--{darken}-{3} mr-2"
+        class="grey--text text--darken-3 mr-2"
         color="amber"
         ripple
         >
