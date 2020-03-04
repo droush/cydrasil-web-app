@@ -30,8 +30,13 @@ export default {
     AmplifyEventBus.$on('authState', info => {
       if (info === 'signedIn') {
         this.findUserName()
-      } else {
+        this.$router.push('/')
+      }
+    })
+    AmplifyEventBus.$on('authState', info => {
+      if (info === 'signedOut') {
         this.findUserName()
+        this.$router.push('/')
       }
     })
   },

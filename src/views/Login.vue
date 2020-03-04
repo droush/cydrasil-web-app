@@ -14,9 +14,10 @@
 </template>
 
 <script>
+
 export default {
   name: 'Login',
-  props: [],
+
   data () {
     return {
       authConfig: {

@@ -13,7 +13,7 @@
         <v-btn
           color="grey darken-3"
           dark
-          depressed=true
+          depressed
           v-on="on"
         >
         {{ getUserName.username }}
