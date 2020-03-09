@@ -1,0 +1,23 @@
+{
+    "permissions": {
+        "auth": {
+            "cydrasilwebapp9dbd2325": [
+                "create",
+                "read",
+                "update"
+            ]
+        },
+        "storage": {
+            "cydrasilPlaceFiles": [
+                "create",
+                "read",
+                "update"
+            ],
+            "CydrasilPlacementInfo": [
+                "create",
+                "read",
+                "update"
+            ]
+        }
+    }
+}

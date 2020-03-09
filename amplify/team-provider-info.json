@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cydrasil-web-app-dev-151000-authRole",
+            "UnauthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-dev-151000-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-dev-151000-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-cydrasil-web-app-dev-151000-deployment",
+            "UnauthRoleName": "amplify-cydrasil-web-app-dev-151000-unauthRole",
+            "StackName": "amplify-cydrasil-web-app-dev-151000",
+            "StackId": "arn:aws:cloudformation:us-west-2:674066163083:stack/amplify-cydrasil-web-app-dev-151000/0f1a2f10-5f2e-11ea-bf69-06e5c7bcc998",
+            "AmplifyAppId": "d1o527hafm5ll7"
+        },
+        "categories": {
+            "auth": {
+                "cydrasilwebapp9dbd2325": {}
+            }
+        }
+    }
+}

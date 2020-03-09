@@ -1,0 +1,51 @@
+{
+	"auth": {
+		"cydrasilwebapp9dbd2325": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"storage": {
+		"cydrasilPlaceFiles": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		},
+		"CydrasilPlacementInfo": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"function": {
+		"placeOnCydrasilJS": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "cydrasilwebapp9dbd2325",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "cydrasilPlaceFiles",
+					"attributes": [
+						"BucketName"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "CydrasilPlacementInfo",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
+}

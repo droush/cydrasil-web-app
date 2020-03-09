@@ -1,0 +1,7 @@
+{
+    "tableName": "CydrasilPlacementInfo",
+    "partitionKeyName": "UserID",
+    "partitionKeyType": "S",
+    "sortKeyName": "BucketFileName",
+    "sortKeyType": "S"
+}
