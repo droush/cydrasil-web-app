@@ -36,18 +36,18 @@ exports.handler = function(event, context, callback) {
         Bucket: srcBucket,
         Key: srcKey,
         };
-        var file = require('fs').createWriteStream('query.fasta');
+        var file = require('fs').createWriteStream('user_query.fasta');
         s3.getObject(params).createReadStream().pipe(file);
         next();
     },
     function placeOnCydrasil(next) {
         var spawn = require('child_process').spawn;
-        spawn('python', ['cydrasil-pipeline-v1.py']);
+        spawn('python3', ['cydrasil-lambda-pipeline-v1.py']);
         next();
     },
     function upload(next) {
       // Stream the transformed image to a different S3 bucket.
-      const fileContent = fs.readFileSync('placements.jplace')
+      const fileContent = fs.readFileSync('placements/epa_result.jplace')
 
       s3.putObject({
         Bucket: dstBucket,

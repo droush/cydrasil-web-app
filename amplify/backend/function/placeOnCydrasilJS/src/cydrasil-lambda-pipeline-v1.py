@@ -4,9 +4,9 @@ import shutil
 
 #Set the cydrasil reference database filepaths and core count
 ref_aln_fa = "/cydrasil-ref/cydrasil-v2-aln.afa"
+ref_aln_phy = "/cydrasil-ref/cydrasil-v2-aln.phy"
 ref_tre = "/cydrasil-ref/cydrasil-v2-tree.nwk"
 ref_mdl = "/cydrasil-ref/cydrasil-v2.bestModel"
-output_dir = "cydrasil-placements"
 cores = "2"
 
 working_dir = os.getcwd()
@@ -14,39 +14,26 @@ working_dir = os.getcwd()
 #Creates sub directories for file management and epa-ng output requirement
 def directory_creation():
 
-    cydrasil_dir = working_dir+"/"+output_dir
-    placement_dir = cydrasil_dir+"/"+"placements"
-
-    os.mkdir(cydrasil_dir)
+    placement_dir = working_dir+"/"+"placements"
 
     os.mkdir(placement_dir)
 
-    return cydrasil_dir, placement_dir
+    return placement_dir
 
 #Workflow function for papara alignment 
-def papara_alignment_workflow(cydrasil_directory):
+def papara_alignment_workflow():
 
-    ssu_aln_dir = cydrasil_directory + "/aln"
-    query_mask_aln = ssu_aln_dir + "/aln.bacteria.mask.stk"
-    query_aln_afa = ssu_aln_dir + "/query-mask-aln.afa"
+    subprocess.run(["./papara_static_x86_64", "-t", ref_tre, "-s", ref_aln_phy, \
+                    "-q user_query.fasta -j", cores, "-r -n lambda-run"])
 
-    subprocess.run(["ssu-prep", "-x query.fasta",
-                    ssu_aln_dir, cores])
+    subprocess.run(["./epa-ng --split", ref_aln_phy, "papara_alignment.lambda-run"])
 
-    subprocess.run(["bash", "aln.ssu-align.sh"])
-
-    subprocess.run(["rm", "aln.ssu-align.sh"])
-
-    subprocess.run(["ssu-mask", "-d", ssu_aln_dir])
-
-    subprocess.run(["ssu-esl-reformat", "-o", query_aln_afa, "afa", query_mask_aln])
-
-    return query_aln_afa
+    return
 
 
-def epa_ng_placement_workflow(query_msk_aln_afa, placement_directory):
+def epa_ng_placement_workflow(placement_directory):
 
-    subprocess.run(["./epa-ng", "-s", ref_aln_fa, "-t", ref_tre, "-q", query_msk_aln_afa, \
+    subprocess.run(["./epa-ng", "-s", ref_aln_fa, "-t", ref_tre, "-q query.fasta" \
                     "--model", ref_mdl, "-w", placement_directory, "-T", cores])
 
     return
@@ -54,11 +41,11 @@ def epa_ng_placement_workflow(query_msk_aln_afa, placement_directory):
 
 def main():
 
-    cydrasil_directory, placement_directory = directory_creation()
+    placement_directory = directory_creation()
 
-    query_msk_aln_afa = papara_alignment_workflow(cydrasil_directory)
+    papara_alignment_workflow()
 
-    epa_ng_placement_workflow(query_msk_aln_afa, placement_directory)
+    epa_ng_placement_workflow(placement_directory)
 
     return
 
