@@ -91,7 +91,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-cydrasil-web-app-dev-151000-deployment",
-					"S3Key": "amplify-builds/placeOnCydrasilJS-5a3372534970356d5532-build.zip"
+					"S3Key": "amplify-builds/placeOnCydrasilJS-384945786b64646d4b4b-build.zip"
 				}
 			}
 		},

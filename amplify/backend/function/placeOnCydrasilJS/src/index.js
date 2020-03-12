@@ -42,7 +42,7 @@ exports.handler = function(event, context, callback) {
     },
     function placeOnCydrasil(next) {
         var spawn = require('child_process').spawn;
-        spawn('python3', ['cydrasil-lambda-pipeline-v1.py']);
+        spawn('python3', [__dirname +'cydrasil-lambda-pipeline-v1.py']);
         next();
     },
     function upload(next) {
