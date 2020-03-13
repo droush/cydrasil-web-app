@@ -46,6 +46,42 @@
 					]
 				}
 			]
+		},
+		"placeOnCydrasilPY": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "cydrasilwebapp9dbd2325",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "cydrasilPlaceFiles",
+					"attributes": [
+						"BucketName"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "CydrasilPlacementInfo",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				},
+				{
+					"category": "function",
+					"resourceName": "placeOnCydrasilJS",
+					"attributes": [
+						"Name"
+					]
+				}
+			]
 		}
 	}
 }
