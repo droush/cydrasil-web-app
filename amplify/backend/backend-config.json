@@ -11,77 +11,24 @@
 		"cydrasilPlaceFiles": {
 			"service": "S3",
 			"providerPlugin": "awscloudformation"
-		},
-		"CydrasilPlacementInfo": {
-			"service": "DynamoDB",
-			"providerPlugin": "awscloudformation"
 		}
 	},
-	"function": {
-		"placeOnCydrasilJS": {
-			"service": "Lambda",
+	"function": {},
+	"api": {
+		"CydrasilWebAppPlacementInfoDB": {
+			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
-			"build": true,
-			"dependsOn": [
-				{
-					"category": "auth",
-					"resourceName": "cydrasilwebapp9dbd2325",
-					"attributes": [
-						"UserPoolId"
-					]
-				},
-				{
-					"category": "storage",
-					"resourceName": "cydrasilPlaceFiles",
-					"attributes": [
-						"BucketName"
-					]
-				},
-				{
-					"category": "storage",
-					"resourceName": "CydrasilPlacementInfo",
-					"attributes": [
-						"Name",
-						"Arn"
-					]
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authcydrasilwebapp9dbd2325"
+						}
+					}
 				}
-			]
-		},
-		"placeOnCydrasilPY": {
-			"service": "Lambda",
-			"providerPlugin": "awscloudformation",
-			"build": true,
-			"dependsOn": [
-				{
-					"category": "auth",
-					"resourceName": "cydrasilwebapp9dbd2325",
-					"attributes": [
-						"UserPoolId"
-					]
-				},
-				{
-					"category": "storage",
-					"resourceName": "cydrasilPlaceFiles",
-					"attributes": [
-						"BucketName"
-					]
-				},
-				{
-					"category": "storage",
-					"resourceName": "CydrasilPlacementInfo",
-					"attributes": [
-						"Name",
-						"Arn"
-					]
-				},
-				{
-					"category": "function",
-					"resourceName": "placeOnCydrasilJS",
-					"attributes": [
-						"Name"
-					]
-				}
-			]
+			}
 		}
 	}
 }
