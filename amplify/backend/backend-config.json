@@ -13,7 +13,37 @@
 			"providerPlugin": "awscloudformation"
 		}
 	},
-	"function": {},
+	"function": {
+		"cydrasilPlacementWorkflowPY": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "cydrasilwebapp9dbd2325",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "cydrasilPlaceFiles",
+					"attributes": [
+						"BucketName"
+					]
+				},
+				{
+					"category": "api",
+					"resourceName": "CydrasilWebAppPlacementInfoDB",
+					"attributes": [
+						"GraphQLAPIIdOutput",
+						"GraphQLAPIEndpointOutput"
+					]
+				}
+			]
+		}
+	},
 	"api": {
 		"CydrasilWebAppPlacementInfoDB": {
 			"service": "AppSync",
