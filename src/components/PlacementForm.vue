@@ -21,12 +21,13 @@
                 </v-file-input>
             </v-col>
         </v-row>
-        <v-row
-        justify="space-between">
+        <v-row>
             <v-col>
                 <v-btn
                     class="grey--text text--darken-3 mr-2"
                     color="amber"
+                    :loading="loading"
+                    :disabled="loading"
                     ripple
                     @click="sendToPlacement"
                     >
@@ -39,25 +40,37 @@
 
 <script>
 import { Storage } from 'aws-amplify'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'PlacementForm',
   data () {
     return {
       selectedFile: null,
-      uploadFileName: null
+      uploadFileName: null,
+      loading: false,
+      placementKey: null
     }
   },
   methods: {
+    ...mapMutations(['updatePlacementResultName']),
+
     onFileSelect (event) {
       this.selectedFile = event
     },
+    uploadComplete () {
+      this.placementKey = `placementFiles/${this.selectedFile.name.replace('.fasta', '.jplace')}`
+      this.$store.commit('updatePlacementResultName', this.placementKey)
+      this.$router.push('Processing')
+    },
     sendToPlacement () {
+      this.loading = true
+
       Storage.put(`queryFiles/${this.selectedFile.name}`, this.selectedFile, {
         level: 'private',
         contentType: 'text/plain'
       })
-        .then(result => console.log(result))
+        .then(result => this.uploadComplete())
         .catch(err => console.log(err))
     }
   }

@@ -5,6 +5,8 @@ import Login from '@/views/Login.vue'
 import Guard from '@/views/Guard.vue'
 import PlaceSequences from '@/views/PlaceSequences.vue'
 import MyPlacements from '@/views/MyPlacements.vue'
+import Results from '@/views/Results.vue'
+import ProcessingPlacements from '@/views/ProcessingPlacements.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -44,10 +46,23 @@ const routes = [
   },
 
   {
+    path: '/results/:placementRun',
+    beforeEnter: guardCheck,
+    name: 'results',
+    component: Results
+  },
+  {
     path: '/MyPlacements',
     beforeEnter: guardCheck,
     name: 'MyPlacements',
     component: MyPlacements
+  },
+
+  {
+    path: '/Processing',
+    beforeEnter: guardCheck,
+    name: 'Processing',
+    component: ProcessingPlacements
   }
 ]
 

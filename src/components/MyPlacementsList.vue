@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <v-container
+  fluid>
     <v-row>
       <v-col>
         <h1
@@ -22,19 +23,18 @@
     <v-row>
       <v-data-table
       :headers="headers"
-      :items="placements"
+      :items="placementRuns"
       :items-per-page="20"
       :search="search"
-      @click:row="handleClick"
       >
-        <template slot="items" slot-scope="props" v-for="item in placements">
+        <template slot="items" slot-scope="props" v-for="item in placementRuns">
           <td :key="item">{{ props.item.key }}</td>
           <td :key="item">{{ props.item.lastModified.toDateString() }}</td>
         </template>
         <template v-slot:item.actions="{ item }">
           <v-icon
             class="ml-5"
-            @click="editItem(item.key)"
+            @click="goToResults(item.key)"
           >
             mdi-palm-tree
           </v-icon>
@@ -50,9 +50,15 @@ import { mapMutations, mapState } from 'vuex'
 
 export default {
 
-  methods: mapMutations(['updatePlacementHistory']),
+  methods: {
+    ...mapMutations(['updatePlacementHistory', 'updatePlacementResultName']),
+    goToResults (item) {
+      this.$store.commit('updatePlacementResultName', item)
+      this.$router.push({ name: 'results', params: { placementRun: item } })
+    }
+  },
 
-  mounted () {
+  created () {
     Storage.list('placementFiles/', { level: 'private' })
       .then(result => this.$store.commit('updatePlacementHistory', result))
       .catch(err => console.log(err))
@@ -83,7 +89,7 @@ export default {
     }
   },
   computed: mapState({
-    placements: state => state.placementInfo.placementHistory
+    placementRuns: state => state.placementInfo.placementHistory
   })
 }
 </script>
