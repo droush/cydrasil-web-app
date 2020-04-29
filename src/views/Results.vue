@@ -1,7 +1,5 @@
 <template>
-  <v-content>
-    <Results />
-  </v-content>
+  <Results />
 </template>
 
 <script>

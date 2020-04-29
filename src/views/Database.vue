@@ -1,17 +1,15 @@
 <template>
-  <v-content>
-    <TestCompPleaseIgnore />
-  </v-content>
+   <DatabaseDetails />
 </template>
 
 <script>
 // @ is an alias to /src
-import TestCompPleaseIgnore from '@/components/TestCompPleaseIgnore.vue'
+import DatabaseDetails from '@/components/DatabaseDetails.vue'
 
 export default {
-  name: 'home',
+  name: 'aboutandcontact',
   components: {
-    TestCompPleaseIgnore
+    DatabaseDetails
   }
 }
 </script>

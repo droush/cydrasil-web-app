@@ -10,7 +10,7 @@
         app
         color="grey"
       >
-        <span class="white--text">&copy; 2019 Daniel Roush</span>
+        <span class="white--text">&copy; 2020 Daniel Roush</span>
      </v-footer>
   </v-app>
 </template>

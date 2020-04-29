@@ -7,6 +7,8 @@ import PlaceSequences from '@/views/PlaceSequences.vue'
 import MyPlacements from '@/views/MyPlacements.vue'
 import Results from '@/views/Results.vue'
 import ProcessingPlacements from '@/views/ProcessingPlacements.vue'
+import DatabaseDetails from '@/views/Database.vue'
+import GettingStarted from '@/views/GettingStarted.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -56,6 +58,17 @@ const routes = [
     beforeEnter: guardCheck,
     name: 'MyPlacements',
     component: MyPlacements
+  },
+
+  {
+    path: '/database',
+    name: 'DatabaseDetails',
+    component: DatabaseDetails
+  },
+  {
+    path: '/gettingstarted',
+    name: 'GettingStarted',
+    component: GettingStarted
   },
 
   {

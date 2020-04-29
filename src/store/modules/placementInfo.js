@@ -1,7 +1,8 @@
 const state = {
   placementHistory: [],
   placementResultName: '',
-  placementResultLink: ''
+  placementResultLink: '',
+  myPlacementsLoaded: false
 }
 
 const getters = {
@@ -13,7 +14,8 @@ const actions = {}
 const mutations = {
   updatePlacementHistory: (state, payload) => (state.placementHistory = payload),
   updatePlacementResultName: (state, payload) => (state.placementResultName = payload),
-  updatePlacementResultLink: (state, payload) => (state.placementResultLink = payload)
+  updatePlacementResultLink: (state, payload) => (state.placementResultLink = payload),
+  updateMyPlacementsLoaded: (state) => (state.myPlacementsLoaded = true)
 }
 
 export default {

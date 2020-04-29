@@ -1,7 +1,5 @@
 <template>
-  <v-content>
     <MyPlacementsList />
-  </v-content>
 </template>
 
 <script>

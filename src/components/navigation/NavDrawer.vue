@@ -40,11 +40,10 @@ export default {
     return {
       items: [
         { title: 'Home', icon: 'mdi-home-city', route: '/' },
-        { title: 'Database Details', icon: 'mdi-pine-tree' },
+        { title: 'Database Details', icon: 'mdi-pine-tree', route: '/database' },
         { title: 'Place Sequences', icon: 'mdi-string-lights', route: '/place' },
-        { title: 'Submit Sequences', icon: 'mdi-pencil' },
-        { title: 'About', icon: 'mdi-information' },
-        { title: 'Contact Us', icon: 'mdi-email' }
+        { title: 'Help & FAQ', icon: 'mdi-lifebuoy' },
+        { title: 'About & Contact', icon: 'mdi-information' }
       ]
     }
   }

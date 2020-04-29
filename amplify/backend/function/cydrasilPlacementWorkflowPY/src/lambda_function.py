@@ -23,7 +23,7 @@ def s3_file_paths(event):
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
         key = unquote_plus(record['s3']['object']['key'])
-        upload_key = key.replace('queryFiles', 'placementFiles').replace('.fasta', '.jplace')
+        upload_key = key.replace('queryFiles', 'placementFiles').replace('.fasta', '-cy_v2.jplace')
         upload_path = 'placements/epa_result.jplace'
 
     return bucket, key, upload_key, upload_path

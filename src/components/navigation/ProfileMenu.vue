@@ -41,8 +41,7 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     items: [
-      { title: 'My Placements', route: '/MyPlacements' },
-      { title: 'Settings' }
+      { title: 'My Placements', route: '/MyPlacements' }
     ],
     disabled: false,
     absolute: false,

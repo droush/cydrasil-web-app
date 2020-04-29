@@ -1,40 +1,51 @@
 <template>
     <v-container>
-        <v-row>
-            <v-col cols="9">
-                <v-textarea
-                filled
-                label=">FASTA Format"
-                clearable
-                >
-                </v-textarea>
-            </v-col>
-        </v-row>
-        <v-row>
-            <v-col cols="9">
-                <v-file-input
-                label="FASTA Input"
-                accept=".fasta"
-                clearable
-                @change="onFileSelect"
-                >
-                </v-file-input>
-            </v-col>
-        </v-row>
-        <v-row>
-            <v-col>
-                <v-btn
-                    class="grey--text text--darken-3 mr-2"
-                    color="amber"
-                    :loading="loading"
-                    :disabled="loading"
-                    ripple
-                    @click="sendToPlacement"
-                    >
-                    Place Sequences
-                </v-btn>
-            </v-col>
-        </v-row>
+      <v-row
+      align="left"
+      justify="left"
+      >
+        <v-col>
+          <h1
+          class="display-2 grey--text text--darken-3"
+          >
+          Place Sequences into Cydrasil</h1>
+        </v-col>
+    </v-row>
+      <v-row>
+          <v-col cols="9">
+              <v-textarea
+              filled
+              label=">FASTA Format"
+              clearable
+              >
+              </v-textarea>
+          </v-col>
+      </v-row>
+      <v-row>
+          <v-col cols="9">
+              <v-file-input
+              label="FASTA Input"
+              accept=".fasta"
+              clearable
+              @change="onFileSelect"
+              >
+              </v-file-input>
+          </v-col>
+      </v-row>
+      <v-row>
+          <v-col>
+              <v-btn
+                  class="grey--text text--darken-3 mr-2"
+                  color="amber"
+                  :loading="loading"
+                  :disabled="loading"
+                  ripple
+                  @click="sendToPlacement"
+                  >
+                  Place Sequences
+              </v-btn>
+          </v-col>
+      </v-row>
     </v-container>
 </template>
 
@@ -59,7 +70,7 @@ export default {
       this.selectedFile = event
     },
     uploadComplete () {
-      this.placementKey = `placementFiles/${this.selectedFile.name.replace('.fasta', '.jplace')}`
+      this.placementKey = `placementFiles/${this.selectedFile.name.replace('.fasta', '-cy_v2.jplace')}`
       this.$store.commit('updatePlacementResultName', this.placementKey)
       this.$router.push('Processing')
     },
