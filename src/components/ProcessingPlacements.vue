@@ -1,34 +1,45 @@
 <template>
-    <v-container
-    class="pa-0"
-    fluid
-    >
-        <v-row
-        align="start"
-        justify="start"
+<v-container fluid>
+   <section
+      id="database-details-info"
+      class="grey lighten-3"
+      >
+      <div class="py-8 ma-0"
+      >
+      <v-container class="text-center">
+        <h1
+        class="display-3 grey--text text--darken-3"
         >
-            <v-col
-            cols="12"
-            >
-                <h1
-                class="display-2 grey--text text--darken-3"
-                > Amazon's hamsters are placing your sequences! </h1>
-            </v-col>
-        </v-row>
+        Processing Placements
+        </h1>
+        <v-divider/>
+      </v-container>
+      </div>
+   </section>
+   <section
+   class="grey lighten-3"
+   >
+   <div>
+    <v-container >
         <v-row
-        align-content="center"
+        class="d-flex justify-center"
         >
-            <v-col>
-                <v-progress-circular
-                :indeterminate="indeterminate"
-                :rotate="rotate"
-                :size="size"
-                :width="width"
-                color="amber"
-            >Eventually</v-progress-circular>
-        </v-col>
+          <v-progress-circular
+            :indeterminate="indeterminate"
+            :rotate="rotate"
+            :size="size"
+            :width="width"
+            color="amber"
+          >
+            <h1 class="headline">
+              Please wait
+            </h1>
+            </v-progress-circular>
         </v-row>
-    </v-container>
+        </v-container>
+   </div>
+    </section>
+  </v-container>
 </template>
 
 <script>

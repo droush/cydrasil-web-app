@@ -1,7 +1,5 @@
 <template>
-    <v-content>
         <ProcessingPlacements />
-    </v-content>
 </template>
 
 <script>

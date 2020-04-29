@@ -9,6 +9,8 @@ import Results from '@/views/Results.vue'
 import ProcessingPlacements from '@/views/ProcessingPlacements.vue'
 import DatabaseDetails from '@/views/Database.vue'
 import GettingStarted from '@/views/GettingStarted.vue'
+import Help from '@/views/Help.vue'
+import About from '@/views/AboutAndContact.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -17,7 +19,7 @@ function guardCheck (to, from, next) {
   if (store.state.loginStatus.loggedIn) {
     next()
   } else {
-    next('/guard')
+    next('/login')
   }
 }
 
@@ -69,6 +71,16 @@ const routes = [
     path: '/gettingstarted',
     name: 'GettingStarted',
     component: GettingStarted
+  },
+  {
+    path: '/help',
+    name: 'Help',
+    component: Help
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
   },
 
   {

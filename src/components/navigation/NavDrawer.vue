@@ -42,8 +42,8 @@ export default {
         { title: 'Home', icon: 'mdi-home-city', route: '/' },
         { title: 'Database Details', icon: 'mdi-pine-tree', route: '/database' },
         { title: 'Place Sequences', icon: 'mdi-string-lights', route: '/place' },
-        { title: 'Help & FAQ', icon: 'mdi-lifebuoy' },
-        { title: 'About & Contact', icon: 'mdi-information' }
+        { title: 'Help & FAQ', icon: 'mdi-lifebuoy', route: '/help' },
+        { title: 'About & Contact', icon: 'mdi-information', route: '/about' }
       ]
     }
   }

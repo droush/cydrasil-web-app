@@ -1,57 +1,87 @@
 <template>
-    <v-container>
-      <v-row
-      align="left"
-      justify="left"
-      >
-        <v-col>
-          <h1
-          class="display-2 grey--text text--darken-3"
+    <v-container fluid>
+      <section
+          id="database-details-info"
+          class="grey lighten-3"
           >
-          Place Sequences into Cydrasil</h1>
-        </v-col>
-    </v-row>
-      <v-row>
-          <v-col cols="9">
-              <v-textarea
-              filled
-              label=">FASTA Format"
-              clearable
-              >
-              </v-textarea>
-          </v-col>
-      </v-row>
-      <v-row>
-          <v-col cols="9">
-              <v-file-input
-              label="FASTA Input"
-              accept=".fasta"
-              clearable
-              @change="onFileSelect"
-              >
-              </v-file-input>
-          </v-col>
-      </v-row>
-      <v-row>
-          <v-col>
-              <v-btn
-                  class="grey--text text--darken-3 mr-2"
-                  color="amber"
-                  :loading="loading"
-                  :disabled="loading"
-                  ripple
-                  @click="sendToPlacement"
+          <div class="py-8 ma-0"
+          >
+          <v-container class="text-center">
+            <h1
+            class="display-2 grey--text text--darken-3"
+            >
+            Place Sequences onto the Cydrasil Reference Tree</h1>
+
+            <v-divider/>
+          </v-container>
+          </div>
+      </section>
+      <section>
+        <div>
+          <v-row class="d-flex justify-center">
+              <v-col cols="9">
+                <h2
+                class="headline pb-1 grey--text text--darken-3"
+                >
+                  Please input your sequences in FASTA format
+                </h2>
+                  <v-textarea
+                  v-model="sequenceInput"
+                  filled
+                  label=">FASTA Format"
+                  clearable
                   >
-                  Place Sequences
-              </v-btn>
-          </v-col>
-      </v-row>
+                  </v-textarea>
+              </v-col>
+          </v-row>
+        </div>
+        <div>
+          <v-row class="d-flex justify-center">
+              <v-col cols="9">
+                <h2
+                class="headline grey--text text--darken-3"
+                >
+                  or upload a FASTA formatted file (.fasta or .fa only)
+                </h2>
+                  <v-file-input
+                  label="FASTA file"
+                  accept=".fasta, .fa"
+                  clearable
+                  @change="onFileSelect"
+                  >
+                  </v-file-input>
+                  <v-alert
+                  v-if="incorrectFileExtension"
+                  type="error"
+                  >
+                      File not correctly formatted
+                  </v-alert>
+              </v-col>
+          </v-row>
+        </div>
+        <div>
+          <v-row class="d-flex justify-center">
+              <v-col cols="9">
+                  <v-btn
+                      class="grey--text text--darken-3 mr-2"
+                      color="amber"
+                      :loading="loading"
+                      :disabled="isDisabled"
+                      ripple
+                      @click="checkAndSendToPlacement"
+                      >
+                      Place Sequences
+                  </v-btn>
+              </v-col>
+          </v-row>
+        </div>
+      </section>
     </v-container>
 </template>
 
 <script>
 import { Storage } from 'aws-amplify'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'PlacementForm',
@@ -59,30 +89,139 @@ export default {
     return {
       selectedFile: null,
       uploadFileName: null,
+      fileUniqueNumber: 0,
+      newFilename: '',
       loading: false,
-      placementKey: null
+      placementKey: null,
+      incorrectFileExtension: false,
+      sequenceInput: null
     }
   },
+  created () {
+    Storage.list('placementFiles/', { level: 'private' })
+      .then(result => this.$store.commit('updatePlacementHistory', result))
+      .then(result => this.$store.commit('updateMyPlacementsLoaded'))
+      .catch(err => console.log(err))
+    console.log(this.placementRuns)
+  },
+  computed: {
+    isDisabled () {
+      if (this.loading === true) {
+        return true
+      } else if (this.incorrectFileExtension === true) {
+        return true
+      } else {
+        return false
+      }
+    },
+    ...mapState({
+      placementRuns: state => state.placementInfo.placementHistory
+    })
+  },
   methods: {
-    ...mapMutations(['updatePlacementResultName']),
-
+    ...mapMutations(['updatePlacementHistory', 'updatePlacementResultName', 'updateMyPlacementsLoaded']),
     onFileSelect (event) {
-      this.selectedFile = event
+      if (event) {
+        let file = event
+
+        // Credit: https://stackoverflow.com/a/754398/52160
+        let reader = new FileReader()
+        reader.readAsText(file, 'UTF-8')
+        reader.onload = evt => {
+          let text = evt.target.result
+          let firstLineFasta = text.split('\n').shift()
+          if (firstLineFasta.includes('>')) {
+            this.onFileSelectExtension(file)
+          } else {
+            this.incorrectFileExtension = true
+          }
+        }
+        reader.onerror = evt => {
+          console.error(evt)
+        }
+      } else {
+      }
+    },
+
+    onFileSelectExtension (event) {
+      if (event.name.includes('.fasta')) {
+        this.selectedFile = event
+        this.incorrectFileExtension = false
+      } else if (event.name.includes('.FASTA')) {
+        this.selectedFile = event.name.replace('.FASTA', '.fasta')
+        this.incorrectFileExtension = false
+      } else if (event.name.includes('.fa')) {
+        this.selectedFile = event.name.replace('.fa', '.fasta')
+        this.incorrectFileExtension = false
+      } else if (event.name.includes('.FA')) {
+        this.selectedFile = event.name.replace('.FA', '.fasta')
+        this.incorrectFileExtension = false
+      } else {
+        this.incorrectFileExtension = true
+      }
     },
     uploadComplete () {
-      this.placementKey = `placementFiles/${this.selectedFile.name.replace('.fasta', '-cy_v2.jplace')}`
+      this.placementKey = `placementFiles/${this.newFilename.replace('.fasta', `-cy_v2.jplace`)}`
       this.$store.commit('updatePlacementResultName', this.placementKey)
       this.$router.push('Processing')
     },
+    checkAndSendToPlacement () {
+      console.log(this.sequenceInput)
+      let nameUnique = false
+      if (!this.sequenceInput) {
+        while (nameUnique === false) {
+          let testKey1 = `placementFiles/${this.selectedFile.name.replace('.fasta', `-${this.fileUniqueNumber}-cy_v2.jplace`)}`
+          console.log(testKey1)
+          console.log(Object.values(this.placementRuns).includes(testKey1))
+          if (Object.values(this.placementRuns).includes(testKey1)) {
+            this.fileUniqueNumber += 1
+          } else {
+            this.newFilename = this.selectedFile.name.replace('.fasta', `-${this.fileUniqueNumber}.fasta`)
+            this.sendToPlacement()
+            nameUnique = true
+          }
+        }
+      } else {
+        while (nameUnique === false) {
+          let testKey2 = `placementFiles/placement-${this.fileUniqueNumber}-cy_v2.jplace`
+          console.log(testKey2)
+          var key2Exists = this.placementRuns.filter(function (o) {
+            return o.hasOwnProperty(testKey2)
+          }).length > 0
+          console.log(key2Exists)
+          if (key2Exists) {
+            this.fileUniqueNumber += 1
+          } else {
+            this.newFilename = `placement-${this.fileUniqueNumber}.fasta`
+            this.sendToPlacement()
+            nameUnique = true
+          }
+        }
+      }
+    },
     sendToPlacement () {
-      this.loading = true
+      if (!this.sequenceInput) {
+        this.loading = true
 
-      Storage.put(`queryFiles/${this.selectedFile.name}`, this.selectedFile, {
-        level: 'private',
-        contentType: 'text/plain'
-      })
-        .then(result => this.uploadComplete())
-        .catch(err => console.log(err))
+        Storage.put(`queryFiles/${this.newFilename}`, this.selectedFile, {
+          level: 'private',
+          contentType: 'text/plain'
+        })
+          .then(result => this.uploadComplete())
+          .catch(err => console.log(err))
+      } else {
+        this.loading = true
+
+        var blob = new Blob([this.sequenceInput], { type: 'text/plain' })
+        var file = new File([blob], this.newFilename, { type: 'text/plain' })
+
+        Storage.put(`queryFiles/${this.newFilename}`, file, {
+          level: 'private',
+          contentType: 'text/plain'
+        })
+          .then(result => this.uploadComplete())
+          .catch(err => console.log(err))
+      }
     }
   }
 }
