@@ -29,18 +29,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
-  name: 'App',
+  name: 'NavDrawer',
 
-  computed: mapGetters(['getDrawerStatus', 'getMiniStatus']),
+  computed: {
+    ...mapGetters(['getDrawerStatus', 'getMiniStatus']),
+    ...mapState({ loginStatus: state => state.loginStatus.loggedIn })
+  },
 
   data () {
     return {
       items: [
         { title: 'Home', icon: 'mdi-home-city', route: '/' },
+        { title: 'Getting Started', icon: 'mdi-traffic-light', route: '/gettingstarted' },
         { title: 'Database Details', icon: 'mdi-pine-tree', route: '/database' },
+        { title: 'My Placement Runs', icon: 'mdi-run-fast', route: '/MyPlacements' },
         { title: 'Place Sequences', icon: 'mdi-string-lights', route: '/place' },
         { title: 'Help & FAQ', icon: 'mdi-lifebuoy', route: '/help' },
         { title: 'About & Contact', icon: 'mdi-information', route: '/about' }

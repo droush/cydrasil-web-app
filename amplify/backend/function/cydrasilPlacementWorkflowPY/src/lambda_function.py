@@ -13,6 +13,7 @@ ref_aln_fa = 'cydrasil-v2-aln.afa'
 ref_aln_phy = 'cydrasil-v2-aln.phy'
 ref_tre = 'cydrasil-v2-tree.nwk'
 ref_mdl = 'cydrasil-v2.bestModel' 
+cydrasil_version = '2'
 cores = '2'
 
 #Set AWS clients
@@ -23,7 +24,7 @@ def s3_file_paths(event):
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
         key = unquote_plus(record['s3']['object']['key'])
-        upload_key = key.replace('queryFiles', 'placementFiles').replace('.fasta', '-cy_v2.jplace')
+        upload_key = key.replace('queryFiles', 'placementFiles').replace('.fasta', '-cy_v'+cydrasil_version+'.jplace')
         upload_path = 'placements/epa_result.jplace'
 
     return bucket, key, upload_key, upload_path
@@ -102,6 +103,8 @@ def lambda_handler(event, context):
     epa_ng_placement_workflow(placement_directory)
     s3_client.upload_file(upload_path, bucket, upload_key)
     cleanup()
+    #delete query file from S3
+    s3_client.delete_object(Bucket=bucket, Key=key)
     
     return {'statusCode':200,
         'body':'Cydrasil Placement success!'}

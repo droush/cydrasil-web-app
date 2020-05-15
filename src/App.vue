@@ -30,7 +30,7 @@ export default {
     AmplifyEventBus.$on('authState', info => {
       if (info === 'signedIn') {
         this.findUserName()
-        this.$router.push('/')
+        this.$router.push('/gettingstarted')
       }
     })
     AmplifyEventBus.$on('authState', info => {

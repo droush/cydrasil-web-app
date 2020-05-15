@@ -6,7 +6,7 @@
         id="database-details-info"
         class="grey lighten-3"
         >
-        <div class="py-8 ma-0"
+        <div class="py-2 ma-0"
         >
         <v-container class="text-center">
           <h1
@@ -17,6 +17,23 @@
           <v-divider/>
         </v-container>
         </div>
+    </section>
+    <section>
+      <v-card
+          flat
+          class="ma-1"
+          >
+          <v-card-title
+          class="grey--text ma-0 pa-1 text--darken-3"
+          >
+          NOTE:
+          </v-card-title>
+          <v-card-subtitle
+          class="grey--text pa-1 text--darken-3"
+          >
+          The cy_vX code at the end of your filename corresponds to the Cydrasil database version that was used to generate placements, i.e., cy_v2 corresponds to Cydrasil version 2.
+          </v-card-subtitle>
+              </v-card>
     </section>
     <section
     >
@@ -51,7 +68,7 @@
               mdi-open-in-app
             </v-icon>
           </template>
-                  <template v-slot:item.download-actions="{ item }">
+          <template v-slot:item.download-actions="{ item }">
             <v-icon
               class="ml-5"
               @click="downloadPlacements(item.key)"
@@ -59,7 +76,32 @@
               mdi-download
             </v-icon>
           </template>
+          <template v-slot:item.delete-actions="{ item }" v-slot:activator='{ on }'>
+            <v-icon
+              class="ml-5"
+              @click="deletePlacementsAsk(item)"
+              v-on='on'
+            >
+              mdi-delete
+            </v-icon>
+          </template>
         </v-data-table>
+
+      </v-row>
+    </section>
+    <section>
+        <v-row justify="center">
+          <v-dialog v-model="dialog" persistent max-width="500">
+            <v-card>
+            <v-card-title class="headline">Delete {{  itemToDelete.keyTidy  }}?</v-card-title>
+            <v-card-text>This will permenently delete this placement run from your account. It cannont be recovered.</v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="red darken-1" text @click="dialog = false">Cancel</v-btn>
+              <v-btn color="green darken-2" text @click='deletePlacementRun()'>Confirm</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </v-row>
     </section>
   </v-container>
@@ -81,21 +123,37 @@ export default {
       Storage.get(item, { level: 'private' })
         .then(result => window.open(result))
         .catch(err => console.log(err))
+    },
+    deletePlacementsAsk (item) {
+      this.dialog = true
+      this.itemToDelete = item
+    },
+    placementListUpdate () {
+      Storage.list('placementFiles/', { level: 'private' })
+        .then(result => this.$store.commit('updatePlacementHistory', result))
+        .then(result => this.$store.commit('updateMyPlacementsLoaded'))
+        .catch(err => console.log(err))
+    },
+    deletePlacementRun () {
+      Storage.remove(this.itemToDelete.key, { level: 'private' })
+        .then(result => console.log(result))
+        .then(result => this.placementListUpdate())
+        .catch(err => console.log(err))
+      this.dialog = false
     }
   },
 
   created () {
-    Storage.list('placementFiles/', { level: 'private' })
-      .then(result => this.$store.commit('updatePlacementHistory', result))
-      .then(result => this.$store.commit('updateMyPlacementsLoaded'))
-      .catch(err => console.log(err))
+    this.placementListUpdate()
     console.log(this.placementRuns)
   },
 
   data () {
     return {
       isLoaded: false,
-      search: ''
+      search: '',
+      dialog: false,
+      itemToDelete: ''
     }
   },
   computed: {
@@ -120,6 +178,10 @@ export default {
         { text: 'Download',
           sortable: false,
           value: 'download-actions'
+        },
+        { text: 'Delete Run',
+          sortable: false,
+          value: 'delete-actions'
         }
       ]
     },

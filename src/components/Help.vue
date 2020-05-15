@@ -4,7 +4,7 @@
       id="database-details-info"
       class="grey lighten-3"
       >
-      <div class="py-8 ma-0"
+      <div class="py-2 ma-0"
       >
       <v-container class="text-center">
         <h1

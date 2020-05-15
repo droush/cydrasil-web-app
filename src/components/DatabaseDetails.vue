@@ -4,7 +4,7 @@
       id="database-details-info"
       class="grey lighten-3"
       >
-      <div class="py-8 ma-0"
+      <div class="py-2 ma-0"
       >
       <v-container class="text-center">
         <h1
@@ -21,17 +21,28 @@
    >
    <div>
      <v-container >
-    <v-row class="d-flex justify-center">
-      <v-col cols="3">
-        <v-text-field
-          v-model="search"
-          append-icon="mdi-magnify"
-          label="Search"
-          single-line
-          hide-details
-        ></v-text-field>
-      </v-col>
-    </v-row>
+      <v-row class="d-flex justify-center">
+        <v-col cols="3">
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-col>
+        <v-col
+        cols="3"
+        class="mt-3"
+        >
+          <v-btn
+          color="amber"
+          depressed
+          >
+            View Cydrasil on iTOL
+          </v-btn>
+          </v-col>
+      </v-row>
     <v-row class="d-flex justify-center">
       <v-col cols="8">
         <v-data-table

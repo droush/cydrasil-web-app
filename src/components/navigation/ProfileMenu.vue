@@ -29,7 +29,10 @@
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
         <v-divider />
+        <v-list-item
+        class="pt-5">
         <amplify-sign-out />
+        </v-list-item>
       </v-list>
     </v-menu>
 
@@ -41,7 +44,7 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     items: [
-      { title: 'My Placements', route: '/MyPlacements' }
+      { title: 'My Placement Runs', route: '/MyPlacements' }
     ],
     disabled: false,
     absolute: false,
@@ -49,7 +52,7 @@ export default {
     value: false,
     closeOnClick: true,
     closeOnContentClick: true,
-    offsetX: false,
+    offsetX: true,
     offsetY: true
   }),
   computed: mapGetters(['getUserName'])

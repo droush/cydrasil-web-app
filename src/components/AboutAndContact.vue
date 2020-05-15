@@ -4,7 +4,7 @@
       id="database-details-info"
       class="grey lighten-3"
       >
-      <div class="py-8 ma-0"
+      <div class="py-2 ma-0"
       >
       <v-container class="text-center">
         <h1
@@ -56,7 +56,7 @@
                 outlined
                 class="pa-1">
                     <v-card-title>
-                        Contact Us!
+                        Contact Us
                     </v-card-title>
                     <v-card-text>
                         If you have any comments, questions or concerns, please feel free to email us at (contact AT cydrasil DOT org)

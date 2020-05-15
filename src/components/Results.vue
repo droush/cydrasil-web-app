@@ -10,7 +10,7 @@
           <h1
           class="display-3 grey--text text--darken-3"
           >
-          Placement Results</h1>
+          Your sequences were successfully placed</h1>
           <v-divider/>
         </v-container>
         </div>
@@ -18,12 +18,62 @@
     <section>
       <div>
         <v-container>
+           <v-card
+        outlined
+        class="ma-2"
+          max-width="800"
+          min-width="800"
+          >
+        <v-card-title
+          class="pb-0 grey--text text--darken-3"
+          >
+          Results for {{ runName.replace('placementFiles/', '').replace('.jplace', '') }}:
+        </v-card-title>
+        <v-card-actions
+        class="pt-0"
+        >
+            <v-btn
+            :href="downloadLink"
+            class="mt-5 grey--text text--darken-3"
+            color="amber"
+            >
+            Download jPlace File
+            </v-btn>
+            <v-btn
+            href=""
+            target="_blank"
+            class="mt-5 grey--text text--darken-3"
+            color="blue"
+            >
+            View Fat Tree
+            </v-btn>
+            <v-btn
+            href="https://itol.embl.de/"
+            target="_blank"
+            class="mt-5 grey--text text--darken-3"
+            color="green"
+            >
+            Analyze with iTOL
+            </v-btn>
+        </v-card-actions>
+        </v-card>
           <v-card
           outlined
           class="ma-2"
           max-width="800"
           min-width="800"
           >
+                  <v-card-title
+          class="grey--text ma-0 text--darken-3"
+          >
+          NOTE:
+          </v-card-title>
+          <v-card-subtitle
+          class="grey--text text--darken-3"
+          >
+          The cy_vX code at the end of your filename corresponds to the Cydrasil database version that was used to generate placements, i.e., cy_v2 corresponds to Cydrasil version 2.
+          </v-card-subtitle>
+          <v-divider/>
           <v-card-title
           class="grey--text ma-0 pt-0 pb-0 text--darken-3"
           >
@@ -44,47 +94,6 @@
             </v-list-item>
           </v-list-item-group>
         </v-list>
-        <v-divider/>
-        <v-card-title
-          class="grey--text ma-0 text--darken-3"
-          >
-          NOTE:
-          </v-card-title>
-          <v-card-subtitle
-          class="grey--text text--darken-3"
-          >
-          The cy_vX code at the end of your filename corresponds to the Cydrasil database version that was used to generate placements, i.e., cy_v2 corresponds to Cydrasil version 2.
-          </v-card-subtitle>
-        </v-card>
-        <v-card
-        outlined
-        class="ma-2"
-          max-width="800"
-          min-width="800"
-          >
-        <v-card-title
-          class="pb-0 grey--text text--darken-3"
-          >
-          Placements for {{ runName.replace('placementFiles/', '').replace('.jplace', '') }}:
-        </v-card-title>
-        <v-card-actions
-        class="pt-0"
-        >
-            <v-btn
-            :href="downloadLink"
-            class="mt-5 grey--text text--darken-3"
-            color="amber"
-            >
-            Download jPlace File
-            </v-btn>
-            <v-btn
-            href="https://itol.embl.de/"
-            class="mt-5 grey--text text--darken-3"
-            color="green"
-            >
-            Visualize with iTOL
-            </v-btn>
-        </v-card-actions>
         </v-card>
         </v-container>
       </div>

@@ -61,7 +61,7 @@
           large
         >
           <span class="grey--text text--darken-3 font-weight-bold">
-            Get started with Cydrasil!
+            Get started with Cydrasil
           </span>
         </v-btn>
       </v-container>

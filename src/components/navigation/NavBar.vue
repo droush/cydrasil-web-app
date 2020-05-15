@@ -22,8 +22,9 @@
         >
         </v-img>
       </router-link>
-
-      <v-spacer></v-spacer>
+      <v-spacer/>
+      <MyPlacementsButton v-if=getLoggedInStatus />
+      <v-spacer/>
 
       <SignInButton v-if=!getLoggedInStatus />
       <ProfileMenu v-if=getLoggedInStatus />
