@@ -1,5 +1,5 @@
 <template>
-    <AboutAndContact />
+  <AboutAndContact />
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 import AboutAndContact from '@/components/AboutAndContact.vue'
 
 export default {
-  name: 'home',
+  name: 'AboutAndContactView',
   components: {
     AboutAndContact
   }

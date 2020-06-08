@@ -1,98 +1,120 @@
 <template>
-    <v-container fluid>
-      <section
-          id="database-details-info"
-          class="grey lighten-3"
-          >
-          <div class="py-2 ma-0"
-          >
-          <v-container class="text-center">
-            <h1
+  <v-container fluid>
+    <section
+      id="database-details-info"
+      class="grey lighten-3"
+    >
+      <div
+        class="py-2 ma-0"
+      >
+        <v-container
+          class="text-center"
+        >
+          <h1
             class="display-3 grey--text text--darken-3"
+          >
+            Place Sequences with the Cydrasil Database
+          </h1>
+          <v-divider/>
+        </v-container>
+      </div>
+    </section>
+    <section>
+      <div>
+        <v-row
+          class="d-flex  justify-center"
+        >
+          <v-col
+            cols="9"
+            class="ma-0 pa-0"
+          >
+            <h2
+              class="body-1 pt-1 grey--text text--darken-3"
             >
-            Place Sequences with the Cydrasil Database</h1>
-
-            <v-divider/>
-          </v-container>
-          </div>
-      </section>
-      <section>
-        <div>
-          <v-row class="d-flex  justify-center">
-              <v-col cols="9" class="ma-0 pa-0">
-                <h2
-                class="body-1 pt-1 grey--text text--darken-3"
-                >
-                  Please name your run
-                </h2>
-                  <v-text-field
-                  v-model="runName"
-                  filled
-                  label="Run Name"
-                  clearable
-                  >
-                  </v-text-field>
-              </v-col>
-          </v-row>
-          <v-row class="d-flex justify-center">
-              <v-col cols="9" class="ma-0 pa-0">
-                <h2
-                class="body-1 pb-1 pt-0 mt-0 grey--text text--darken-3"
-                >
-                  Please input your sequences in FASTA format
-                </h2>
-                  <v-textarea
-                  v-model="sequenceInput"
-                  filled
-                  label=">FASTA Format"
-                  clearable
-                  >
-                  </v-textarea>
-              </v-col>
-          </v-row>
-        </div>
-        <div >
-          <v-row class="d-flex justify-center">
-              <v-col cols="9" class="ma-0 pa-0">
-                <h2
-                class="body-1 grey--text text--darken-3"
-                >
-                  or upload a FASTA formatted file (.fasta or .fa only)
-                </h2>
-                  <v-file-input
-                  label="FASTA file"
-                  accept=".fasta, .fa"
-                  clearable
-                  @change="onFileSelect"
-                  >
-                  </v-file-input>
-                  <v-alert
-                  v-if="incorrectFileExtension"
-                  type="error"
-                  >
-                      Input not correctly formatted. Potentially missing the FASTA header
-                  </v-alert>
-              </v-col>
-          </v-row>
-        </div>
-        <div>
-          <v-row class="d-flex justify-center">
-              <v-col cols="9">
-                  <v-btn
-                      class="grey--text text--darken-3 mr-2"
-                      color="amber"
-                      :loading="loading"
-                      :disabled="isDisabled"
-                      ripple
-                      @click="checkAndSendToPlacement"
-                      >
-                      Place Sequences
-                  </v-btn>
-              </v-col>
-          </v-row>
-        </div>
-      </section>
-    </v-container>
+              Please name your run
+            </h2>
+            <v-text-field
+              v-model="runName"
+              filled
+              label="Run Name"
+              clearable
+            >
+            </v-text-field>
+          </v-col>
+        </v-row>
+        <v-row
+          class="d-flex justify-center"
+        >
+          <v-col
+            cols="9"
+            class="ma-0 pa-0"
+          >
+            <h2
+              class="body-1 pb-1 pt-0 mt-0 grey--text text--darken-3"
+            >
+              Please input your sequences in FASTA format
+            </h2>
+            <v-textarea
+              v-model="sequenceInput"
+              filled
+              label=">FASTA Format"
+              clearable
+            >
+            </v-textarea>
+          </v-col>
+        </v-row>
+      </div>
+      <div >
+        <v-row
+          class="d-flex justify-center"
+        >
+          <v-col
+            cols="9"
+            class="ma-0 pa-0"
+          >
+            <h2
+              class="body-1 grey--text text--darken-3"
+            >
+              or upload a FASTA formatted file (.fasta or .fa only)
+            </h2>
+            <v-file-input
+              label="FASTA file"
+              accept=".fasta, .fa"
+              clearable
+              @change="onFileSelect"
+            >
+            </v-file-input>
+            <v-alert
+              v-if="incorrectFileExtension"
+              type="error"
+            >
+              Input not correctly formatted. Potentially missing the FASTA header
+            </v-alert>
+          </v-col>
+        </v-row>
+      </div>
+      <div>
+        <v-row
+          class="d-flex justify-center"
+        >
+          <v-col
+            cols="9"
+          >
+            <v-btn
+              class="grey--text text--darken-3 mr-2"
+              color="amber"
+              :loading="loading"
+              :disabled="isDisabled"
+              ripple
+              @click="checkAndSendToPlacement"
+            >
+              Place Sequences
+            </v-btn>
+          </v-col>
+        </v-row>
+      </div>
+    </section>
+  </v-container>
 </template>
 
 <script>

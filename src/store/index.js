@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import createPersistedState from 'vuex-persistedstate'
 import drawerStatus from './modules/drawerStatus'
 import loginStatus from './modules/loginStatus'
 import placementInfo from './modules/placementInfo'
@@ -19,6 +18,4 @@ export default new Vuex.Store({
     loginStatus,
     placementInfo
   }
-  // plugins: [createPersistedState({
-  // })]
 })

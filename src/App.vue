@@ -1,6 +1,5 @@
 <template>
   <v-app>
-
     <NavBar />
     <NavDrawer />
     <v-content>
@@ -53,6 +52,7 @@ export default {
 </script>
 
 <style>
+/*This is to adjust the AWS Amplify component colors, before it was available in Amplify*/
 :root {
 
   /* Colors */

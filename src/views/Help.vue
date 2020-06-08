@@ -1,5 +1,5 @@
 <template>
-    <Help />
+  <Help />
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 import Help from '@/components/Help.vue'
 
 export default {
-  name: 'home',
+  name: 'HelpView',
   components: {
     Help
   }

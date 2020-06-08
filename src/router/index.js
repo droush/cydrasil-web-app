@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
-import Guard from '@/views/Guard.vue'
 import PlaceSequences from '@/views/PlaceSequences.vue'
 import MyPlacements from '@/views/MyPlacements.vue'
 import Results from '@/views/Results.vue'
@@ -34,12 +33,6 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
-  },
-
-  {
-    path: '/guard',
-    name: 'guard',
-    component: Guard
   },
 
   {

@@ -38,6 +38,8 @@
           <v-btn
           color="amber"
           depressed
+          href="https://itol.embl.de/tree/722012507563761591409018"
+          target="_blank"
           >
             View Cydrasil on iTOL
           </v-btn>
@@ -60,12 +62,36 @@
                 flat
               >
                 <v-card-text>
-                  <div class="title grey--text text--darken-3">
+                  <h1 class="title red--text text--darken-3">
                     Warnings:
-                  </div>
-                  <div class="body-1 mb-5 grey--text text--darken-3">
+                  </h1>
+                  <p class="body-1 mb-5 grey--text text--darken-3">
                     {{ item.warnings }}
+                  </p>
+                  <h1 class="title grey--text text--darken-3">
+                    Notes:
+                  </h1>
+                  <p class="body-1 mb-5 grey--text text--darken-3">
+                    {{ item.notes }}
+                  </p>
+                    <div class="title grey--text text--darken-3">
+                    Source:
                   </div>
+                  <p
+                  class="body-1 mb-5 grey--text text--darken-3"
+                  >
+                    {{ item.dataSource }}
+                  </p>
+                   <div class="title grey--text text--darken-3">
+                    Source Link:
+                  </div>
+                                    <a
+                  class="body-1 mb-5 grey--text text--darken-3"
+                  :href='item.dataSourceLink'
+                  target="_blank"
+                  >
+                    {{ item.dataSourceLink }}
+                  </a>
                   <div>
                   <div class="title grey--text text--darken-3">
                     Sequence:
@@ -90,7 +116,7 @@
 </template>
 
 <script>
-import cydrasilDatabase from '@/assets/cydrasil-files/cydrasil-v2-warnings.json'
+import cydrasilDatabase from '@/assets/cydrasil-files/cydrasil-v2.json'
 // import PhylogeneticTree from './PhylogeneticTree'
 
 export default {

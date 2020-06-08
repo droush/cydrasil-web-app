@@ -1,66 +1,81 @@
 <template>
   <v-container
-  fluid
+    fluid
   >
     <section
-        id="database-details-info"
-        class="grey lighten-3"
+      id="database-details-info"
+      class="grey lighten-3"
+    >
+      <div
+        class="py-2 ma-0"
+      >
+        <v-container
+          class="text-center"
         >
-        <div class="py-2 ma-0"
-        >
-        <v-container class="text-center">
           <h1
-          class="display-3 grey--text text--darken-3"
+            class="display-3 grey--text text--darken-3"
           >
-          My Placement Runs</h1>
-
+            My Placement Runs
+          </h1>
           <v-divider/>
         </v-container>
-        </div>
+      </div>
     </section>
     <section>
       <v-card
-          flat
-          class="ma-1"
-          >
-          <v-card-title
+        flat
+        class="ma-1"
+      >
+        <v-card-title
           class="grey--text ma-0 pa-1 text--darken-3"
-          >
+        >
           NOTE:
-          </v-card-title>
-          <v-card-subtitle
+        </v-card-title>
+        <v-card-subtitle
           class="grey--text pa-1 text--darken-3"
-          >
+        >
           The cy_vX code at the end of your filename corresponds to the Cydrasil database version that was used to generate placements, i.e., cy_v2 corresponds to Cydrasil version 2.
-          </v-card-subtitle>
-              </v-card>
+        </v-card-subtitle>
+      </v-card>
     </section>
-    <section
-    >
-      <v-row class="d-flex justify-center">
-        <v-col cols="5">
+    <section>
+      <v-row
+        class="d-flex justify-center"
+      >
+        <v-col
+          cols="5"
+        >
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
             label="Search"
             single-line
             hide-details
-          ></v-text-field>
+          >
+          </v-text-field>
         </v-col>
       </v-row>
-      <v-row class="d-flex justify-center">
+      <v-row
+        class="d-flex justify-center"
+      >
         <v-data-table
-        :headers="headers"
-        :items="placementRunsTidy"
-        :items-per-page="20"
-        :search="search"
-        v-if="placementsLoaded"
+          :headers="headers"
+          :items="placementRunsTidy"
+          :items-per-page="20"
+          :search="search"
+          v-if="placementsLoaded"
         >
-          <template slot="items" slot-scope="row" v-for="item in placementRunsTidy">
+          <template
+            slot="items"
+            slot-scope="row"
+            v-for="item in placementRunsTidy"
+          >
             <td :key="item">{{ item.keyTidy }}</td>
             <td :key="item">{{ item.dateTidy }}</td>
           </template>
-          <template v-slot:item.actions="{ item }">
+          <template
+            v-slot:item.actions="{ item }"
+          >
             <v-icon
               class="ml-5"
               @click="goToResults(item.key)"
@@ -68,7 +83,9 @@
               mdi-open-in-app
             </v-icon>
           </template>
-          <template v-slot:item.download-actions="{ item }">
+          <template
+            v-slot:item.download-actions="{ item }"
+          >
             <v-icon
               class="ml-5"
               @click="downloadPlacements(item.key)"
@@ -76,7 +93,10 @@
               mdi-download
             </v-icon>
           </template>
-          <template v-slot:item.delete-actions="{ item }" v-slot:activator='{ on }'>
+          <template
+            v-slot:item.delete-actions="{ item }"
+            v-slot:activator='{ on }'
+          >
             <v-icon
               class="ml-5"
               @click="deletePlacementsAsk(item)"
@@ -86,19 +106,42 @@
             </v-icon>
           </template>
         </v-data-table>
-
       </v-row>
     </section>
     <section>
-        <v-row justify="center">
-          <v-dialog v-model="dialog" persistent max-width="500">
-            <v-card>
-            <v-card-title class="headline">Delete {{  itemToDelete.keyTidy  }}?</v-card-title>
-            <v-card-text>This will permenently delete this placement run from your account. It cannont be recovered.</v-card-text>
+      <v-row
+        justify="center"
+      >
+        <v-dialog
+          v-model="dialog"
+          persistent
+          max-width="500"
+        >
+          <v-card>
+            <v-card-title
+              class="headline"
+            >
+              Delete {{  itemToDelete.keyTidy  }}?
+            </v-card-title>
+            <v-card-text>
+              This will permenently delete this placement run from your account. It cannont be recovered.
+            </v-card-text>
             <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="red darken-1" text @click="dialog = false">Cancel</v-btn>
-              <v-btn color="green darken-2" text @click='deletePlacementRun()'>Confirm</v-btn>
+              <v-spacer />
+              <v-btn
+                color="red darken-1"
+                text
+                @click="dialog = false"
+              >
+                Cancel
+              </v-btn>
+              <v-btn
+                color="green darken-2"
+                text
+                @click='deletePlacementRun()'
+              >
+                Confirm
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>

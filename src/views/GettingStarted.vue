@@ -6,7 +6,7 @@
 import GettingStarted from '@/components/GettingStarted.vue'
 
 export default {
-  name: 'aboutandcontact',
+  name: 'GettingStartedView',
   components: {
     GettingStarted
   }

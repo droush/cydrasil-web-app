@@ -1,5 +1,5 @@
 <template>
-    <PlacementForm />
+  <PlacementForm />
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 import PlacementForm from '@/components/PlacementForm.vue'
 
 export default {
-  name: 'place',
+  name: 'PlacementFormView',
   components: {
     PlacementForm
   }

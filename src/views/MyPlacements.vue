@@ -1,5 +1,5 @@
 <template>
-    <MyPlacementsList />
+  <MyPlacementsList />
 </template>
 
 <script>
@@ -8,6 +8,7 @@
 import MyPlacementsList from '@/components/MyPlacementsList.vue'
 
 export default {
+  name: 'MyPlacementsListView',
   components: {
     MyPlacementsList
   }

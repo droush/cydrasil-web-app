@@ -1,31 +1,36 @@
 <template>
- <v-container fluid>
-   <section
+  <v-container
+  fluid
+  >
+    <section
       id="login"
       class="grey lighten-3"
-      >
-      <div class="py-2 ma-0"
-      >
-      <v-container class="text-center">
-        <h1
-        class="display-3 grey--text text--darken-3"
-        >
-        Login or Create an Account</h1>
-
-        <v-divider/>
-      </v-container>
-      </div>
-   </section>
-   <section
-   id="aws-login"
-   >
-    <div
-    class="mt-4 d-flex justify-center"
     >
-            <amplify-authenticator v-bind:authConfig="authConfig"></amplify-authenticator>
-    </div>
+      <div
+        class="py-2 ma-0"
+      >
+        <v-container
+          class="text-center"
+        >
+          <h1
+            class="display-3 grey--text text--darken-3"
+          >
+            Login or Create an Account
+          </h1>
+          <v-divider/>
+        </v-container>
+      </div>
     </section>
- </v-container>
+    <section
+      id="aws-login"
+    >
+      <div
+        class="mt-4 d-flex justify-center"
+      >
+        <amplify-authenticator v-bind:authConfig="authConfig"></amplify-authenticator>
+      </div>
+    </section>
+  </v-container>
 </template>
 
 <script>

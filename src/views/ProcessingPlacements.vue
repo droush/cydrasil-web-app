@@ -1,5 +1,5 @@
 <template>
-        <ProcessingPlacements />
+  <ProcessingPlacements />
 </template>
 
 <script>
@@ -8,6 +8,7 @@
 import ProcessingPlacements from '@/components/ProcessingPlacements.vue'
 
 export default {
+  name: 'ProcessingPlacementsView',
   components: {
     ProcessingPlacements
   }

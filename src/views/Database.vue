@@ -1,5 +1,5 @@
 <template>
-   <DatabaseDetails />
+  <DatabaseDetails />
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 import DatabaseDetails from '@/components/DatabaseDetails.vue'
 
 export default {
-  name: 'aboutandcontact',
+  name: 'DatabaseView',
   components: {
     DatabaseDetails
   }
