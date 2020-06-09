@@ -47,7 +47,7 @@
                   class="mt-5 grey--text text--darken-3"
                   color="green"
                 >
-                  Analyze with iTOL
+                  How to Analyze with iTOL
                 </v-btn>
             </v-card-actions>
           </v-card>

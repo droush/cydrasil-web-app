@@ -171,7 +171,7 @@ export default {
         {
           icon: 'mdi-home-group',
           title: 'Community Built',
-          text: 'Cydrasil is a community resource. New sequences can be submitted at any time and will be incorporated into the next release!'
+          text: 'Cydrasil is a community resource. New sequences can be submitted at any time and will be incorporated into the next release.'
         }
       ]
     }

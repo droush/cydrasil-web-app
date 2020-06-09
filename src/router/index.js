@@ -10,6 +10,7 @@ import DatabaseDetails from '@/views/Database.vue'
 import GettingStarted from '@/views/GettingStarted.vue'
 import Help from '@/views/Help.vue'
 import About from '@/views/AboutAndContact.vue'
+import HowToAnalyze from '@/views/HowToAnalyze.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -75,7 +76,11 @@ const routes = [
     name: 'About',
     component: About
   },
-
+  {
+    path: '/HowToAnalyze',
+    name: 'HowToAnalyze',
+    component: HowToAnalyze
+  },
   {
     path: '/Processing',
     beforeEnter: guardCheck,

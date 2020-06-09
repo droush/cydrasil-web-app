@@ -1,41 +1,43 @@
 <template>
 <v-menu
-      v-model="value"
-      :disabled="disabled"
-      :absolute="absolute"
-      :open-on-hover="openOnHover"
-      :close-on-click="closeOnClick"
-      :close-on-content-click="closeOnContentClick"
-      :offset-x="offsetX"
-      :offset-y="offsetY"
+  v-model="value"
+  :disabled="disabled"
+  :absolute="absolute"
+  :open-on-hover="openOnHover"
+  :close-on-click="closeOnClick"
+  :close-on-content-click="closeOnContentClick"
+  :offset-x="offsetX"
+  :offset-y="offsetY"
+>
+  <template
+    v-slot:activator="{ on }"
+  >
+    <v-btn
+      color="grey darken-3"
+      dark
+      depressed
+      v-on="on"
     >
-      <template v-slot:activator="{ on }">
-        <v-btn
-          color="grey darken-3"
-          dark
-          depressed
-          v-on="on"
-        >
-        {{ getUserName.username }}
-        </v-btn>
-      </template>
-      <v-list>
-        <v-list-item
-          v-for="(item, index) in items"
-          :key="index"
-          :to="item.route"
-          exact
-        >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
-        <v-divider />
-        <v-list-item
-        class="pt-5">
-        <amplify-sign-out />
-        </v-list-item>
-      </v-list>
-    </v-menu>
-
+    {{ getUserName.username }}
+    </v-btn>
+  </template>
+  <v-list>
+    <v-list-item
+      v-for="(item, index) in items"
+      :key="index"
+      :to="item.route"
+      exact
+    >
+      <v-list-item-title>{{ item.title }}</v-list-item-title>
+    </v-list-item>
+    <v-divider />
+    <v-list-item
+      class="pt-5"
+    >
+    <amplify-sign-out />
+    </v-list-item>
+  </v-list>
+</v-menu>
 </template>
 
 <script>
