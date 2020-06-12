@@ -15,13 +15,9 @@ const actions = {
     try {
       commit('saveUserName', await Auth.currentAuthenticatedUser())
       commit('logInState', true)
-      console.log(state.authenticatedUser.username)
-      console.log(state.loggedIn)
     } catch (err) {
       commit('saveUserName', null)
       commit('logInState', false)
-      console.log('Oh no')
-      console.log(state.loggedIn)
     }
   }
 }
