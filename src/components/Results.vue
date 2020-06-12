@@ -19,9 +19,9 @@
     </section>
     <section>
       <div>
-        <v-container>
+        <v-container class="d-flex justify-center">
           <v-card
-            outlined
+            flat
             class="ma-2"
             max-width="800"
             min-width="800"
@@ -29,7 +29,7 @@
             <v-card-title
               class="pb-0 grey--text text--darken-3"
             >
-              Results for {{ runName.replace('placementFiles/', '').replace('.jplace', '') }}:
+              Results for {{ runName.split('/')[3].replace('.jplace', '') }}:
             </v-card-title>
             <v-card-actions
               class="pt-0"
@@ -42,7 +42,7 @@
                   Download jPlace File
                 </v-btn>
                 <v-btn
-                  href="https://itol.embl.de/"
+                  to="/HowToAnalyze"
                   target="_blank"
                   class="mt-5 grey--text text--darken-3"
                   color="green"
@@ -50,13 +50,6 @@
                   How to Analyze with iTOL
                 </v-btn>
             </v-card-actions>
-          </v-card>
-          <v-card
-            outlined
-            class="ma-2"
-            max-width="800"
-            min-width="800"
-          >
             <v-card-title
               class="grey--text ma-0 text--darken-3"
             >

@@ -23,12 +23,31 @@
       id="cydrasil-database-table"
     >
       <div>
-        <v-container>
+        <v-card
+          class="pa-0 grey--text text--darken-3"
+          flat
+        >
+        <v-card-text class="py-2">
+          This is a searchable version of the Cydrasil database that includes Warnings about problematic sequences,
+          the source of the sequence and a link to the original data repository from where the sequence was retrieved,
+          notes about the sequence including other names, and the sequence used for the reference package construction.
+        </v-card-text>
+        <v-card-title class="pt-1 my-0  ">
+          Cydrasil Stats: Version 2
+        </v-card-title>
+        <v-card-subtitle>
+          <b>Total Sequences:</b> 1482 | <b>Cyanobacteria:</b> 1405 | <b>Sibling Clades:</b> 68 | <b>Plastid:</b> 6 | <b>Outgroup:</b> 3
+        </v-card-subtitle>
+        </v-card>
+        <v-container
+          class="py-0 my-0"
+        >
           <v-row
-            class="d-flex justify-center"
+            class="d-flex justify-center py-0 my-0"
           >
             <v-col
               cols="3"
+              class="py-0 my-0"
             >
               <v-text-field
                 v-model="search"
@@ -40,7 +59,7 @@
             </v-col>
             <v-col
               cols="3"
-              class="mt-3"
+              class="mt-0"
             >
               <v-btn
                 color="amber"
@@ -57,6 +76,7 @@
           >
             <v-col
               cols="8"
+              class="pt-0"
             >
               <v-data-table
                 :headers="headers"

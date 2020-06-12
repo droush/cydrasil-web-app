@@ -55,7 +55,7 @@
             />
           </v-row>
           <v-card-text>
-          2. Upload the <i>placement file</i> (.JPLACE) to iTOL (https://itol.embl.de).
+          2. Upload the <i>placement file</i> (.JPLACE) to iTOL (<a href="https://itol.embl.de/" target="_blank">https://itol.embl.de/</a>).
           </v-card-text>
           <v-card-text class="ml-3">
           <i>Placement file</i>:

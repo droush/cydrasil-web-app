@@ -24,17 +24,18 @@
     <section>
       <v-card
         flat
-        class="ma-1"
+        class="ma-2"
       >
         <v-card-title
-          class="grey--text ma-0 pa-1 text--darken-3"
+          class="grey--text pa-1 text--darken-3"
         >
           NOTE:
         </v-card-title>
         <v-card-subtitle
           class="grey--text pa-1 text--darken-3"
         >
-          The cy_vX code at the end of your filename corresponds to the Cydrasil database version that was used to generate placements, i.e., cy_v2 corresponds to Cydrasil version 2.
+          The cy_vX code at the end of your filename corresponds to the Cydrasil database version
+          that was used to generate placements, i.e., cy_v2 corresponds to Cydrasil version 2.
         </v-card-subtitle>
       </v-card>
     </section>
@@ -124,7 +125,7 @@
               Delete {{  itemToDelete.keyTidy  }}?
             </v-card-title>
             <v-card-text>
-              This will permenently delete this placement run from your account. It cannont be recovered.
+              This will permenently delete this placement run from your account. It cannot be recovered.
             </v-card-text>
             <v-card-actions>
               <v-spacer />
@@ -230,7 +231,7 @@ export default {
     },
     placementRunsTidy () {
       return this.placementRuns.map((item) => {
-        item.keyTidy = item.key.replace('placementFiles/', '')
+        item.keyTidy = item.key.split('/')[3]
         item.dateTidy = item.lastModified.toDateString() + ' ' + item.lastModified.toLocaleTimeString()
         return item
       })

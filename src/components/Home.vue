@@ -61,7 +61,7 @@
           class="mx-auto title grey--text text--darken-3 font-weight-light mb-8"
           max-width="1080"
         >
-          Cydrasil is a comprehensive manually curated Cyanobacterial sequence database containing over 1300 16S rRNA gene sequences with lengths exceeding 1100 base pairs. Cydrasil offers a curated alignment and a maximum-likelihood phylogenetic tree that can be used for comprehensive phylogenetic analysis. Cydrasil provides you with the backbone for a complete phylogenetic perspective of your new isolate or amplicon study.
+          Cydrasil is a comprehensive manually curated Cyanobacterial sequence database containing over 1400 16S rRNA gene sequences with lengths exceeding 1100 base pairs. Cydrasil offers a curated alignment and a maximum-likelihood phylogenetic tree that can be used for comprehensive phylogenetic analysis. Cydrasil provides you with the backbone for a complete phylogenetic perspective of your new isolate or amplicon study.
         </v-responsive>
         <div></div>
         <v-btn

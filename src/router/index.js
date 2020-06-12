@@ -11,6 +11,7 @@ import GettingStarted from '@/views/GettingStarted.vue'
 import Help from '@/views/Help.vue'
 import About from '@/views/AboutAndContact.vue'
 import HowToAnalyze from '@/views/HowToAnalyze.vue'
+import ErrorView from '@/views/ErrorView.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -80,6 +81,11 @@ const routes = [
     path: '/HowToAnalyze',
     name: 'HowToAnalyze',
     component: HowToAnalyze
+  },
+  {
+    path: '/Error',
+    name: 'ErrorView',
+    component: ErrorView
   },
   {
     path: '/Processing',

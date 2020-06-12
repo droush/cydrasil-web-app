@@ -1,24 +1,32 @@
 <template>
   <v-container fluid>
-    <section
-      id="database-details-info"
-      class="grey lighten-3"
+    <v-card
+      class="pt-0 mt-0"
+      flat
     >
-      <div
-        class="py-2 ma-0"
+      <v-card-title
+        class="pt-0 mt-0 mb-1 pb-0"
       >
-        <v-container
-          class="text-center"
-        >
-          <h1
-            class="display-3 grey--text text--darken-3"
-          >
-            Place Sequences with the Cydrasil Database
-          </h1>
-          <v-divider/>
-        </v-container>
-      </div>
-    </section>
+        Placing Query Sequences using the Cydrasil Reference Package
+      </v-card-title>
+      <v-card-text
+        class="mt-0 pt-0"
+      >
+        Sequence and file formatting are imperative for an error-free run. Please format your input as a FASTA file. If you are submitting
+        only a few sequences, please make sure that they have proper FASTA headers.
+      </v-card-text>
+      <v-card-title
+        class="py-1"
+      >
+        Current Cydrasil Pipeline Program Versions
+      </v-card-title>
+      <v-card-text>
+        <b>Cydrasil</b>: 2 |
+        <a href="https://cme.h-its.org/exelixis/web/software/papara/index.html" target="_blank"><b>PaPaRa</b></a>: 2.5 |
+        <a href="https://github.com/Pbdas/epa-ng" target="_blank"><b>EPA-ng</b></a>: 0.3.6
+      </v-card-text>
+    </v-card>
+    <v-divider />
     <section>
       <div>
         <v-row
@@ -26,18 +34,19 @@
         >
           <v-col
             cols="9"
-            class="ma-0 pa-0"
+            class="ma-0 px-0 pb-0 pt-1"
           >
-            <h2
-              class="body-1 pt-1 grey--text text--darken-3"
+            <p
+              class="body-1 font-weight-bold pt-1 grey--text text--darken-3"
             >
-              Please name your run
-            </h2>
+              Name your run
+            </p>
             <v-text-field
               v-model="runName"
               filled
               label="Run Name"
               clearable
+              @input="runNameChange"
             >
             </v-text-field>
           </v-col>
@@ -49,16 +58,18 @@
             cols="9"
             class="ma-0 pa-0"
           >
-            <h2
-              class="body-1 pb-1 pt-0 mt-0 grey--text text--darken-3"
+            <p
+              class="body-1 font-weight-bold pb-1 pt-0 mt-0 grey--text text--darken-3"
             >
-              Please input your sequences in FASTA format
-            </h2>
+              Input your sequences in FASTA format, or
+            </p>
             <v-textarea
               v-model="sequenceInput"
               filled
               label=">FASTA Format"
               clearable
+              @click:clear="onClearSeqInput"
+              @input="seqInputChange"
             >
             </v-textarea>
           </v-col>
@@ -72,11 +83,11 @@
             cols="9"
             class="ma-0 pa-0"
           >
-            <h2
-              class="body-1 grey--text text--darken-3"
+            <p
+              class="body-1 font-weight-bold grey--text text--darken-3"
             >
-              or upload a FASTA formatted file (.fasta or .fa only)
-            </h2>
+              Upload a FASTA formatted file (.fasta only)
+            </p>
             <v-file-input
               label="FASTA file"
               accept=".fasta, .fa"
@@ -88,7 +99,28 @@
               v-if="incorrectFileExtension"
               type="error"
             >
-              Input not correctly formatted. Potentially missing the FASTA header
+              Incorrect file format extension. Please make sure your query sequence file is in FASTA format and the file
+              extension is .fasta (Case-sensitive)
+            </v-alert>
+            <v-alert
+              v-if="incorrectFileFormat"
+              type="error"
+            >
+              Query file not in FASTA format. Each sequence should contain a header beginning with > and the next line should be the sequence.
+              Please make sure your query sequence file is in FASTA format and the file extension is .fasta (Case-sensitive)
+            </v-alert>
+            <v-alert
+              v-if="missingRunName"
+              type="error"
+            >
+              Please enter a name for this placement run.
+            </v-alert>
+            <v-alert
+              v-if="incorrectTextBoxFormat"
+              type="error"
+            >
+              Your entered sequence(s) do not have FASTA headers. Please make sure each sequence has a corresponding
+              FASTA header.
             </v-alert>
           </v-col>
         </v-row>
@@ -98,7 +130,8 @@
           class="d-flex justify-center"
         >
           <v-col
-            cols="9"
+            cols="2"
+            class="pl-12 pt-4"
           >
             <v-btn
               class="grey--text text--darken-3 mr-2"
@@ -106,10 +139,22 @@
               :loading="loading"
               :disabled="isDisabled"
               ripple
-              @click="checkAndSendToPlacement"
+              @click="runNameCheck"
             >
               Place Sequences
             </v-btn>
+          </v-col>
+          <v-col
+            cols="8"
+            class="pl-12"
+          >
+            <p
+              class="body-1 grey--text text--darken-3"
+            >
+              <b>WARNING:</b> If the query file exceeds 5,000 sequences, it will be unable to complete.
+              <br>
+              Please split the query file, and do separate runs.
+            </p>
           </v-col>
         </v-row>
       </div>
@@ -119,7 +164,6 @@
 
 <script>
 import { Storage } from 'aws-amplify'
-import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'PlacementForm',
@@ -127,21 +171,17 @@ export default {
     return {
       selectedFile: null,
       uploadFileName: null,
-      fileUniqueNumber: 0,
       newFilename: '',
       loading: false,
       placementKey: null,
       incorrectFileExtension: false,
-      runName: null,
-      sequenceInput: null
+      incorrectFileFormat: false,
+      incorrectTextBoxFormat: false,
+      missingRunName: false,
+      runName: '',
+      sequenceInput: '',
+      timestamp: null
     }
-  },
-  created () {
-    Storage.list('placementFiles/', { level: 'private' })
-      .then(result => this.$store.commit('updatePlacementHistory', result))
-      .then(result => this.$store.commit('updateMyPlacementsLoaded'))
-      .catch(err => console.log(err))
-    console.log(this.placementRuns)
   },
   computed: {
     isDisabled () {
@@ -149,16 +189,31 @@ export default {
         return true
       } else if (this.incorrectFileExtension === true) {
         return true
+      } else if (this.incorrectFileFormat === true) {
+        return true
+      } else if (this.missingRunName === true) {
+        return true
+      } else if (this.incorrectTextBoxFormat === true) {
+        return true
       } else {
         return false
       }
-    },
-    ...mapState({
-      placementRuns: state => state.placementInfo.placementHistory
-    })
+    }
   },
   methods: {
-    ...mapMutations(['updatePlacementHistory', 'updatePlacementResultName', 'updateMyPlacementsLoaded']),
+    onClearSeqInput () {
+      this.incorrectTextBoxFormat = false
+      this.loading = false
+    },
+    runNameChange () {
+      this.missingRunName = false
+      this.loading = false
+    },
+    seqInputChange () {
+      this.incorrectTextBoxFormat = false
+      this.loading = false
+    },
+    // Scans input file to make sure in FASTA format
     onFileSelect (event) {
       if (event) {
         let file = event
@@ -172,13 +227,12 @@ export default {
           if (firstLineFasta.includes('>')) {
             this.onFileSelectExtension(file)
           } else {
-            this.incorrectFileExtension = true
+            this.incorrectFileFormat = true
           }
         }
         reader.onerror = evt => {
           console.error(evt)
         }
-      } else {
       }
     },
 
@@ -189,7 +243,13 @@ export default {
       } else if (event.name.includes('.FASTA')) {
         this.selectedFile = event.name.replace('.FASTA', '.fasta')
         this.incorrectFileExtension = false
+      } else if (event.name.includes('.Fasta')) {
+        this.selectedFile = event.name.replace('.Fasta', '.fasta')
+        this.incorrectFileExtension = false
       } else if (event.name.includes('.fa')) {
+        this.selectedFile = event.name.replace('.fa', '.fasta')
+        this.incorrectFileExtension = false
+      } else if (event.name.includes('.Fa')) {
         this.selectedFile = event.name.replace('.fa', '.fasta')
         this.incorrectFileExtension = false
       } else if (event.name.includes('.FA')) {
@@ -199,47 +259,20 @@ export default {
         this.incorrectFileExtension = true
       }
     },
-    uploadComplete () {
-      this.placementKey = `placementFiles/${this.newFilename.replace('.fasta', `-cy_v2.jplace`)}`
-      this.$store.commit('updatePlacementResultName', this.placementKey)
-      this.$router.push('Processing')
-    },
-    checkAndSendToPlacement () {
-      console.log(this.sequenceInput)
-      let nameUnique = false
-      if (!this.sequenceInput) {
-        while (nameUnique === false) {
-          let testKey1 = `placementFiles/${this.selectedFile.name.replace('.fasta', `-${this.fileUniqueNumber}-cy_v2.jplace`)}`
-          console.log(testKey1)
-          console.log(Object.values(this.placementRuns).includes(testKey1))
-          if (Object.values(this.placementRuns).includes(testKey1)) {
-            this.fileUniqueNumber += 1
-          } else {
-            this.newFilename = this.selectedFile.name.replace('.fasta', `-${this.fileUniqueNumber}.fasta`)
-            this.sendToPlacement()
-            nameUnique = true
-          }
-        }
+    runNameCheck () {
+      if (this.runName === '' || this.runName === null) {
+        this.missingRunName = true
       } else {
-        while (nameUnique === false) {
-          let testKey2 = `placementFiles/placement-${this.fileUniqueNumber}-cy_v2.jplace`
-          console.log(testKey2)
-          var key2Exists = this.placementRuns.filter(function (o) {
-            return o.hasOwnProperty(testKey2)
-          }).length > 0
-          console.log(key2Exists)
-          if (key2Exists) {
-            this.fileUniqueNumber += 1
-          } else {
-            this.newFilename = `placement-${this.fileUniqueNumber}.fasta`
-            this.sendToPlacement()
-            nameUnique = true
-          }
-        }
+        this.renameInputAndPlace()
       }
     },
+    renameInputAndPlace () {
+      const timestamp = Date.now()
+      this.newFilename = `/${timestamp}/${this.runName}.fasta`
+      this.sendToPlacement()
+    },
     sendToPlacement () {
-      if (!this.sequenceInput) {
+      if (this.sequenceInput === '' && this.selectedFile) {
         this.loading = true
 
         Storage.put(`queryFiles/${this.newFilename}`, this.selectedFile, {
@@ -249,18 +282,36 @@ export default {
           .then(result => this.uploadComplete())
           .catch(err => console.log(err))
       } else {
-        this.loading = true
-
         var blob = new Blob([this.sequenceInput], { type: 'text/plain' })
         var file = new File([blob], this.newFilename, { type: 'text/plain' })
 
-        Storage.put(`queryFiles/${this.newFilename}`, file, {
-          level: 'private',
-          contentType: 'text/plain'
-        })
-          .then(result => this.uploadComplete())
-          .catch(err => console.log(err))
+        let reader = new FileReader()
+        reader.readAsText(file, 'UTF-8')
+        reader.onload = evt => {
+          let text = evt.target.result
+          let firstLineFasta = text.split('\n').shift()
+          if (firstLineFasta.includes('>')) {
+            this.loading = true
+            Storage.put(`queryFiles/${this.newFilename}`, file, {
+              level: 'private',
+              contentType: 'text/plain'
+            })
+              .then(result => this.uploadComplete())
+              .catch(err => console.log(err))
+          } else {
+            this.incorrectTextBoxFormat = true
+          }
+        }
+        reader.onerror = evt => {
+          console.error(evt)
+        }
       }
+    },
+
+    uploadComplete () {
+      this.placementKey = `placementFiles/${this.newFilename.replace('.fasta', `-cy_v2.jplace`)}`
+      this.$store.commit('updatePlacementResultName', this.placementKey)
+      this.$router.push('Processing')
     }
   }
 }

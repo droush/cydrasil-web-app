@@ -51,10 +51,15 @@ export default {
     rotate: 0,
     size: 400,
     width: 13,
-    polling: null
+    polling: null,
+    errorTimeout: null
   }),
   created () {
-    this.polling = setInterval(() => {
+    this.errorTimeout = setTimeout(() => {
+      this.pushErrorPage()
+    }, 930000)
+
+    this.polling = setTimeout(() => {
       Storage.list(this.$store.state.placementInfo.placementResultName, { level: 'private' })
         .then(result => this.checkS3Result(result))
         .catch(err => console.log(err))
@@ -62,6 +67,7 @@ export default {
   },
 
   beforeDestroy () {
+    clearInterval(this.errorTimeout)
     clearInterval(this.polling)
   },
 
@@ -69,7 +75,16 @@ export default {
     checkS3Result (result) {
       if (result.length !== 0) {
         this.$router.push({ name: 'results', params: { placementRun: this.$store.state.placementInfo.placementResultName } })
+      } else {
+        setTimeout(() => {
+          Storage.list(this.$store.state.placementInfo.placementResultName, { level: 'private' })
+            .then(result => this.checkS3Result(result))
+            .catch(err => console.log(err))
+        }, 30000)
       }
+    },
+    pushErrorPage () {
+      this.$router.push('error')
     }
   }
 }

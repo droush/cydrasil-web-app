@@ -34,7 +34,8 @@
             Use the Cydrasil Web App to Place Sequences
           </v-card-title>
           <v-card-text>
-            Powered by PaPaRa and epa-ng, place your 16S rRNA gene sequences on the Cydrasil reference tree. You will need an account to run the placements on our servers.
+            Powered by PaPaRa and epa-ng, place your 16S rRNA gene sequences on the Cydrasil reference tree.
+            You will need an account to run the placements on our servers.
           </v-card-text>
           <v-card-actions
             class="justify-center"
@@ -62,7 +63,8 @@
             Place my sequences on Cydrasil or view previous runs
           </v-card-title>
           <v-card-text>
-            Powered by PaPaRa and epa-ng, place your 16S rRNA gene sequences on the Cydrasil reference tree, or view your previous placement runs.
+            Powered by PaPaRa and epa-ng, place your 16S rRNA gene sequences on the Cydrasil reference tree,
+            or view your previous placement runs.
           </v-card-text>
           <v-card-actions
             class="justify-center"
@@ -98,10 +100,10 @@
           max-width="600"
         >
           <v-card-title>
-            I want to learn how to analyze my placements with iTOL
+            I want to learn how to analyze my placements with iTOL.
           </v-card-title>
           <v-card-text>
-            A searchable database of sequences is available in Database Details, including the full 16S sequence and any warnings about the entry!
+            We have a step-by-step guide on analyzing your sequence placement results with iTOL.
           </v-card-text>
           <v-card-actions
             class="justify-center"
@@ -128,10 +130,11 @@
           max-width="600"
         >
           <v-card-title>
-            I want to check Cydrasil for a sequence
+            What sequences make up the Cydrasil database?
           </v-card-title>
           <v-card-text>
-            A searchable database of sequences is available in Database Details, including the full 16S sequence and any warnings about the entry!
+            A searchable database of sequences is available in Database Details, including the full 16S
+            rRNA gene sequence and any warnings about the entry.
           </v-card-text>
           <v-card-actions
             class="justify-center"
@@ -158,10 +161,10 @@
           max-width="600"
         >
           <v-card-title>
-            I want to download the Cydrasil files for my own analysis
+            I want to download the Cydrasil reference package for my own analysis.
           </v-card-title>
           <v-card-text>
-            The current version of the Cydrasil database and all previous versions are available on GitHub!
+            All versions of the Cydrasil reference package are available on GitHub.
           </v-card-text>
           <v-card-actions
             class="justify-center"
