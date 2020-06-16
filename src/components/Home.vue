@@ -61,7 +61,10 @@
           class="mx-auto title grey--text text--darken-3 font-weight-light mb-8"
           max-width="1080"
         >
-          Cydrasil is a comprehensive manually curated Cyanobacterial sequence database containing over 1400 16S rRNA gene sequences with lengths exceeding 1100 base pairs. Cydrasil offers a curated alignment and a maximum-likelihood phylogenetic tree that can be used for comprehensive phylogenetic analysis. Cydrasil provides you with the backbone for a complete phylogenetic perspective of your new isolate or amplicon study.
+          Cydrasil is a comprehensive manually curated Cyanobacterial reference package containing over 1400 16S rRNA gene
+          sequences with lengths exceeding 1100 base pairs. Cydrasil offers a curated alignment and a maximum-likelihood
+          phylogenetic tree that can be used for sequence placement or <i>de novo</i> phylogenetic reconstructions.
+          Cydrasil utilizes phylogenetic placement to give you a complete phylogenetic perspective of your new isolate or amplicon study.
         </v-responsive>
         <div></div>
         <v-btn
@@ -95,7 +98,7 @@
           <h2
             class="display-2 grey--text text--darken-3 font-weight-bold mb-3"
           >
-            CYDRASIL FEATURES
+            THE 3 C'S OF THE CYDRASIL PROJECT
           </h2>
           <v-responsive
             class="mx-auto mb-12"
@@ -161,17 +164,17 @@ export default {
         {
           icon: 'mdi-hiking',
           title: 'Comprehensive',
-          text: 'Cydrasil contains representatives from a wide range of habitats, providing extensive phylogenetic coverage for your analysis.'
+          text: 'Cydrasil contains Cyanobacterial representatives from a wide range of habitats, providing extensive phylogenetic coverage for your analysis.'
         },
         {
           icon: 'mdi-magnify',
-          title: 'Manually Curated',
-          text: 'All sequences in Cydrasil have been manually checked for errors. If a sequence taxon name appears to be incorrect, the sequence has been flagged with a warning.'
+          title: 'Curated',
+          text: 'All sequences in Cydrasil have been manually checked for sequencing and taxonomic errors. If a sequence appears to have an error, the sequence has been flagged with a warning.'
         },
         {
           icon: 'mdi-home-group',
-          title: 'Community Built',
-          text: 'Cydrasil is a community resource. New sequences can be submitted at any time and will be incorporated into the next release.'
+          title: 'Community',
+          text: 'Community feedback is essential for the evolution of Cydrasil. We encourage researchers to submit new sequences or clade suggestions that will then be incorporated into the next release.'
         }
       ]
     }

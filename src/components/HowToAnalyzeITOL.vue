@@ -39,7 +39,7 @@
           <v-card-title>
             Step By Step Guide
           </v-card-title>
-          <v-card-text>
+          <v-card-text class="font-weight-black">
             1. After downloading your phylogenetic placement results file (.JPLACE) from the Cydrasil web application,
             navigate to iTOL (<a href="https://itol.embl.de/" target="_blank">https://itol.embl.de/</a>) and register or
             login to your account.
@@ -54,7 +54,7 @@
               src="@/assets/howto-itol/1-itol-login.png"
             />
           </v-row>
-          <v-card-text>
+          <v-card-text class="font-weight-black">
           2. Upload the <i>placement file</i> (.JPLACE) to iTOL (<a href="https://itol.embl.de/" target="_blank">https://itol.embl.de/</a>).
           </v-card-text>
           <v-card-text class="ml-3">
@@ -72,7 +72,7 @@
               src="@/assets/howto-itol/2-itol-upload.png"
             />
           </v-row>
-          <v-card-text>
+          <v-card-text class="font-weight-black">
             3. Click on the placement file name to access the Cydrasil tree containing the placement of your sequences.
           </v-card-text>
           <v-row
@@ -85,7 +85,7 @@
               src="@/assets/howto-itol/3-itol-tree-link.png"
             />
           </v-row>
-          <v-card-text>
+          <v-card-text class="font-weight-black">
             4. From the Controls box set parameters as follows:
           </v-card-text>
           <v-card-text class="ml-3">
@@ -130,10 +130,10 @@
               src="@/assets/howto-itol/4-itol-settings.png"
             />
           </v-row>
-          <v-card-text>
+          <v-card-text class="font-weight-black">
             5. Root the Cydrasil tree:
           </v-card-text>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             Go to the search icon and type Listeria
           </v-card-text>
           <v-row
@@ -146,7 +146,7 @@
               src="@/assets/howto-itol/5-itol-search.png"
             />
           </v-row>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             Click on <i>Listeria monocytogenes</i> to be taken to the node where this sequence is located
           </v-card-text>
           <v-row
@@ -159,7 +159,7 @@
               src="@/assets/howto-itol/6-itol-root.png"
             />
           </v-row>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             Click on the parent node, navigate to <b>Tree structure</b> and then click <b>Reroot the tree here</b>
           </v-card-text>
           <v-row
@@ -172,7 +172,7 @@
               src="@/assets/howto-itol/7-itol-root-2.png"
             />
           </v-row>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             Go to the Controls box and click on <b>Save/restore view</b>, then click on <b>Save as default view for this tree</b>
             <br>
             <br>
@@ -189,7 +189,7 @@
               src="@/assets/howto-itol/8-itol-default-view.png"
             />
           </v-row>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             6.  From the Controls box go to <b>Datasets</b> and turn on the <b>Phylogenetic Placements</b> dataset.
             Once <b>Phylogenetic Placements</b> are turned on, red circles will display along the tree at the nodes
             where query sequences were placed.
@@ -204,7 +204,7 @@
               src="@/assets/howto-itol/9-dataset.png"
             />
           </v-row>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             7. Use the <b>Show query form</b> to search for the placement of an individual query sequence by sequence ID
           </v-card-text>
           <v-row
@@ -217,7 +217,7 @@
               src="@/assets/howto-itol/10-query-placements.png"
             />
           </v-row>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             8.  Insert query sequence ID and click <b>G</b>o. Red circles will display on the nodes of Cydrasil where that specific sequence
             was placed.
             <br>
@@ -243,7 +243,7 @@
               src="@/assets/howto-itol/11-query-results.png"
             />
           </v-row>
-          <v-card-text class="ml-3">
+          <v-card-text class="ml-3 font-weight-black">
             You can also click at the node of interest to display the <b>Phylogenetic Placements box</b>. Here you can find
             the sequence ID (<i>Sequence</i>), the current node at which you are looking at (<i>edge-num</i>), and the
             probability that the sequence belongs to the node (<i>like_weight_ratio</i>).

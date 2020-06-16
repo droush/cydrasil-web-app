@@ -34,7 +34,7 @@
             splitting query files larger than 5,000 sequences and doing multiple separate placement runs.
             <br>
             <br>
-            If that wasn't it, there may be an error in your query sequences, for example, an incorrect character in a sequences
+            If that wasn't it, there may be an error in your query sequences. For example, an incorrect character in a sequence
             or a header line could be at the end of the previous sequence.
           </p>
         </v-container>
@@ -42,7 +42,7 @@
           <p
             class="body-1 red--text text--darken-3"
           >
-            Please contact us at contact (at) cydrasil (dot) org if you need help troubleshooting a failed run.
+            Please contact us at: contact (at) cydrasil (dot) org if you need help troubleshooting a failed run.
             <br>
           </p>
         </v-container>

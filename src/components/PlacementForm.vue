@@ -23,7 +23,8 @@
       <v-card-text>
         <b>Cydrasil</b>: 2 |
         <a href="https://cme.h-its.org/exelixis/web/software/papara/index.html" target="_blank"><b>PaPaRa</b></a>: 2.5 |
-        <a href="https://github.com/Pbdas/epa-ng" target="_blank"><b>EPA-ng</b></a>: 0.3.6
+        <a href="https://github.com/Pbdas/epa-ng" target="_blank"><b>EPA-ng</b></a>: 0.3.6 |
+        <a href="" target="">What's this?</a>
       </v-card-text>
     </v-card>
     <v-divider />
@@ -153,7 +154,7 @@
             >
               <b>WARNING:</b> If the query file exceeds 5,000 sequences, it will be unable to complete.
               <br>
-              Please split the query file, and do separate runs.
+              Please split the query file and run the resulting files separately.
             </p>
           </v-col>
         </v-row>
@@ -179,7 +180,7 @@ export default {
       incorrectTextBoxFormat: false,
       missingRunName: false,
       runName: '',
-      sequenceInput: '',
+      sequenceInput: null,
       timestamp: null
     }
   },
@@ -272,7 +273,7 @@ export default {
       this.sendToPlacement()
     },
     sendToPlacement () {
-      if (this.sequenceInput === '' && this.selectedFile) {
+      if (this.sequenceInput === null && this.selectedFile) {
         this.loading = true
 
         Storage.put(`queryFiles/${this.newFilename}`, this.selectedFile, {

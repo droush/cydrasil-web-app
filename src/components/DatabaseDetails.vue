@@ -28,9 +28,10 @@
           flat
         >
         <v-card-text class="py-2">
-          This is a searchable version of the Cydrasil database that includes Warnings about problematic sequences,
-          the source of the sequence and a link to the original data repository from where the sequence was retrieved,
-          notes about the sequence including other names, and the sequence used for the reference package construction.
+          This is a searchable version of the Cydrasil database that includes warnings about problematic sequences,
+          the source of the sequence and a link to the original data repository from where the sequence was retrieved.
+          We have also included any notes about the sequence including other names, and the reference sequence
+          used for the reference package construction.
         </v-card-text>
         <v-card-title class="pt-1 my-0  ">
           Cydrasil Stats: Version 2

@@ -25,7 +25,7 @@ export default {
 
   created () {
     this.findUserName()
-
+    // Set the redirect when logged in
     AmplifyEventBus.$on('authState', info => {
       if (info === 'signedIn') {
         this.findUserName()
