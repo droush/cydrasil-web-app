@@ -42,8 +42,8 @@ export default {
         { title: 'Home', icon: 'mdi-home-city', route: '/' },
         { title: 'Getting Started', icon: 'mdi-traffic-light', route: '/gettingstarted' },
         { title: 'Database Details', icon: 'mdi-pine-tree', route: '/database' },
-        { title: 'My Placement Runs', icon: 'mdi-run-fast', route: '/MyPlacements' },
         { title: 'Place Sequences', icon: 'mdi-string-lights', route: '/place' },
+        { title: 'My Placement Runs', icon: 'mdi-run-fast', route: '/MyPlacements' },
         { title: 'Help & FAQ', icon: 'mdi-lifebuoy', route: '/help' },
         { title: 'About & Contact', icon: 'mdi-information', route: '/about' }
       ]

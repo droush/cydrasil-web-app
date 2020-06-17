@@ -26,7 +26,7 @@
           class="pa-1 grey--text text--darken-3"
         >
           <v-card-title>
-              Cydrasil Philosophy
+              Cydrasil Philosophy & Methodology
           </v-card-title>
           <v-card-text>
             Cydrasil was created originally as a comprehensive cyanobacterial 16S rRNA gene reference package to
@@ -45,13 +45,23 @@
                 cyanobacteria-specific primers.</li>
             </ol>
             <br>
-            <br>
             The database was first populated with all available cyanobacterial 16S rRNA gene sequences from NCBI in the summer of 2016.
             Since then, we have continually incorporated sequences from NCBI but also added sequences from the JGI-IMG/M database,
             and user submissions.
             <br>
             <br>
-            Cydrasil is focused on providing a comprehensive, curated cyanobacterial 16S rRNA gene sequence reference package for
+            The reference alignment was generated using <a href="http://eddylab.org/software/ssu-align/" target="_blank">SSU-ALIGN</a>
+            with default parameters. This aligner uses a profile-based
+            alignment strategy, in which each target sequence is aligned independently to a covariance model that uses the 16S rRNA
+            gene secondary structure, and then masked using SSUMASK with the automatically computed alignment confidence values
+            (posterior probabilities). A maximum-likelihood phylogenetic tree was then generated using the
+            <a href="https://cme.h-its.org/exelixis/software.html" target="_blank">RAxML-HPC2</a> (8.2.12) Workflow
+            on XSEDE on the <a href="http://www.phylo.org/" target="_blank">CIPRES Science Gateway</a>. The ML + thorough bootstrap
+            workflow was used with the following modified parameters:
+            1000 bootstraps (-N 1000) and the GTRGAMMA model. All other parameters were left at default values.
+            <br>
+            <br>
+            Cydrasil was created to provide a comprehensive and curated cyanobacterial 16S rRNA gene sequence reference package for
             use in sequence placement or <i>de novo</i> phylogenetic reconstructions. We have done the hard part in compiling and curated
             the sequences, and we want you to use them for your analyses.
             <br>
@@ -60,6 +70,7 @@
             where your sequences fall within the context of the full phylogenetic picture and then decide based upon your placements.
             We are here to help you navigate the cyanobacterial taxonomic/phylogenetic disconnect, but final taxonomic decisions
             are down to you.
+
           </v-card-text>
           <v-card-title>
             Sibling Clades to the Cyanobacteria
@@ -79,22 +90,6 @@
             and have marked them as such in both the database and the tree graphic (Database details). A great discussion about this
             subject, titled “What's in a name? The case of cyanobacteria” by Garcia-Pichel et al. can be found
             <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jpy.12934" target="_blank">here</a>.
-          </v-card-text>
-          <v-card-title>
-            Cydrasil Methodology
-          </v-card-title>
-          <v-card-text>
-            Cydrasil is a sequence database, alignment, and phylogenetic tree containing 1405 cyanobacterial 16S rRNA gene sequences,
-            downloaded from NCBI and IMG and used for placement of sequence variants (sOTUs) from 16S rRNA gene amplicon studies.
-            The reference alignment was generated using <a href="http://eddylab.org/software/ssu-align/" target="_blank">SSUALIGN</a>
-            with default parameters. This aligner uses a profile-based
-            alignment strategy, in which each target sequence is aligned independently to a covariance model that uses the 16S rRNA
-            gene secondary structure, and then masked using SSUMASK with the automatically computed alignment confidence values
-            (posterior probabilities). A maximum-likelihood phylogenetic tree was then generated using the
-            <a href="https://cme.h-its.org/exelixis/software.html" target="_blank">RAxML-HPC2</a> (8.2.12) Workflow
-            on XSEDE on the <a href="http://www.phylo.org/" target="_blank">CIPRES Science Gateway</a>. The ML + thorough bootstrap
-            workflow was used with the following modified parameters:
-            1000 bootstraps (-N 1000) and the GTRGAMMA model. All other parameters were left at default values.
           </v-card-text>
           <v-card-title>
             Community Contributions

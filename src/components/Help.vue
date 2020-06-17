@@ -47,18 +47,18 @@
           </v-card-subtitle>
           <v-card-text>
             We have a comprehensive tutorial available <router-link to="HowToAnalyze">here</router-link> for using iTOL.
-            We also have a webinar walks you through the analysis <a href="https://youtu.be/FynML7Mu26U?t=2337"
+            We also have a webinar that walks you through the analysis <a href="https://youtu.be/FynML7Mu26U?t=2337"
             target="_blank">Link to Webinar</a>
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"
           >
-            How many sequences can be placed on Cydrasil at the time?
+            How many sequences can be placed on Cydrasil at a time?
           </v-card-subtitle>
           <v-card-text>
-            Our server can handle up to 5,000 short (~250 base pairs) query sequences at a time. If the input file is too large,
-            the analysis will time out after 15 minutes. If this happens, we recommend the user split the query file up and do
-            separate runs for each file.
+            Our server can handle up to 5,000 short (~250 base pairs) query sequences at a time. Currently,
+            the analysis will time out after 15 minutes, which happens if the input file is too large.
+            If this occurs, we recommend the user split the query file up and do separate runs for each file.
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"
