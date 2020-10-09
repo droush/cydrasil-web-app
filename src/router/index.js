@@ -12,6 +12,7 @@ import Help from '@/views/Help.vue'
 import About from '@/views/AboutAndContact.vue'
 import HowToAnalyze from '@/views/HowToAnalyze.vue'
 import ErrorView from '@/views/ErrorView.vue'
+import Terms from '@/views/Terms.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -92,6 +93,11 @@ const routes = [
     beforeEnter: guardCheck,
     name: 'Processing',
     component: ProcessingPlacements
+  },
+  {
+    path: '/terms',
+    name: 'Terms',
+    component: Terms
   }
 ]
 

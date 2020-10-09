@@ -25,7 +25,9 @@
           outlined
         >
           <v-card-title>
-            If you do not find your answer here, please contact us at contact (at) cydrasil (dot) org. We are happy to help!
+            If you do not find your answer here, please contact us at:
+            <a href="mailto:cydrasil@asu.edu">cydrasil@asu.edu</a>.
+            We are happy to help!
           </v-card-title>
           <v-divider />
           <v-card-subtitle
@@ -35,7 +37,7 @@
           </v-card-subtitle>
           <v-card-text>
             Each output from the Cydrasil tool has a “-cy_vX” tag at the end of the file.
-            The number in place of the X, following the v contains the Cydrasil database version that was used to place your sequences.
+            The number in place of the X, following the v is the Cydrasil database version that was used to place your sequences.
             <br>
             <br>
             <i>Ex. test-run-cy_v2.jplace</i>
@@ -46,8 +48,8 @@
             How do I interpret my phylogenetic placement results?
           </v-card-subtitle>
           <v-card-text>
-            We have a comprehensive tutorial available <router-link to="HowToAnalyze">here</router-link> for using iTOL.
-            We also have a webinar that walks you through the analysis <a href="https://youtu.be/FynML7Mu26U?t=2337"
+            We have provided a tutorial available <router-link to="HowToAnalyze">here</router-link> for using iTOL as a jPLACE viewing
+            tool. A webinar that walks you through the analysis can be found here: <a href="https://youtu.be/FynML7Mu26U?t=2337"
             target="_blank">Link to Webinar</a>
           </v-card-text>
           <v-card-subtitle
@@ -58,7 +60,7 @@
           <v-card-text>
             Our server can handle up to 5,000 short (~250 base pairs) query sequences at a time. Currently,
             the analysis will time out after 15 minutes, which happens if the input file is too large.
-            If this occurs, we recommend the user split the query file up and do separate runs for each file.
+            If this occurs, we recommend to split the query file up and do separate runs.
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"
@@ -66,23 +68,23 @@
             Is there a minimum query sequence length for sequence placement with Cydrasil?
           </v-card-subtitle>
           <v-card-text>
-            We recommend using 200+ base pair length sequences for the most accurate placements. This is the length of the output
-            from an Illumina 2X250 MiSeq run using the <a href="https://earthmicrobiome.org/" target="_blank">Earth Microbiome Project primers</a>.
+            We recommend using sequences greater than 200 base pairs in length which is the output of an
+            Illumina 2X250 MiSeq run using the <a href="https://earthmicrobiome.org/" target="_blank">Earth Microbiome Project primers</a>.
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"
           >
-            How do I access to my phylogenetic placement results?
+            How do I access my phylogenetic placement results?
           </v-card-subtitle>
           <v-card-text>
-            When your placement run is finished, you will be taken to a results page where you can download your JPLACE file.
+            When your placement run is finished, you will be taken to a results page from which you can download your JPLACE file.
             Your results can also be found in the My Placement Runs page. You can click on the corresponding results button
             or download directly from your history.
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"
           >
-            Can the phylogenetic placement results (.JPLACE file) be used on platform different from iTOL?
+            Can the phylogenetic placement results (.JPLACE file) be visualized a on platform different from iTOL?
           </v-card-subtitle>
           <v-card-text>
             iTOL is the easiest and fastest way to visualize your placement results. For more complex analyses,
@@ -97,8 +99,8 @@
             is an available feature of both pplacer and EPA-ng.
           </v-card-subtitle>
           <v-card-text>
-            We made an intentional design decision when creating Cydrasil to not assign taxonomy but provide a full phylogenetic
-            framework and allow the user to assign taxonomy based upon the actual placements within the Cydrasil tree.
+            We made an intentional design decision not to assign taxonomy automatically, but provide a full phylogenetic
+            framework so that the user can make informed taxonomic assignments based upon the actual placements within the Cydrasil tree.
             There is an expanded explanation in <router-link to="About">About & Contact</router-link>.
           </v-card-text>
           <v-card-subtitle
@@ -107,11 +109,11 @@
             If a query sequence is placed at two or more nodes with the same <i>like_weight_ratio</i>, is the placement inconclusive?
           </v-card-subtitle>
           <v-card-text>
-            This depends on the placement itself. The <i>like_weight_ratio</i> is the probability of a sequence belonging to the corresponding
+            This depends on the placement itself. The <i>like_weight_ratio</i> is the probability that a sequence belongs to the corresponding
             branch of the reference tree. In some cases, you will see a sequence place across two or three branches with an even split
             of the <i>like_weight_ratio</i>. You may also see a split between a parent node, and two child branches. In these cases, if the nodes/branches
-            are very close and the cumulative <i>like_weight_ratio</i> exceeds <b>0.7</b>, we say the sequence must belong to the clade, but we can’t
-            specifically tell which branch.
+            are very close and the cumulative <i>like_weight_ratio</i> exceeds <b>0.7</b>, we assume that the sequence must belong to the clade, but we can’t
+            specifically tell which branch within it.
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"
@@ -119,9 +121,10 @@
             What <i>like_weight_ratio</i> is an appropriate cut off when using the evolutionary placement algorithm (EPA-ng)?
           </v-card-subtitle>
           <v-card-text>
-            For our analyses, we typically use 0.7 (70%) cutoff (based off the traditional <b>0.7</b> bootstrap confidence cutoff from
-            phylogenetic analyses). We have seen some researchers drop as low as 0.5 or go as high as 0.9. This choice is down to the
-            researcher, your experimental design, and how strict you want to be in classification.
+            For our analyses, we typically use a 0.7 (70%) cutoff (similar to the traditional <b>0.7</b> bootstrap confidence cutoff
+            oftentimes used in phylogenetic analyses). Some researchers drop as low as 0.5 or go as high as 0.9.
+            These are recommendations but in the end, the choice is yours and should be based on your experimental design, and how
+            strict you want to be in classification.
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"
@@ -155,7 +158,8 @@
           </v-card-subtitle>
           <v-card-text>
             Currently, we are accepting submissions by email only. If you have a 1100+ base pair sequence from an isolate,
-            a genome, or a metagenome assembled genome (MAG) you can email us at contact (at) cydrasil (dot) org and we will
+            a genome, or a metagenome assembled genome (MAG) you can email us at <a href="mailto:cydrasil@asu.edu">cydrasil@asu.edu</a>
+            and we will
             incorporate it into the next major database update. We also understand that there may be clades that are
             pertinent to your research that are not included in the tree. If this is the case, send us an email and we will
             work at adding them into the next release. Cydrasil development is anchored on community feedback and we want to

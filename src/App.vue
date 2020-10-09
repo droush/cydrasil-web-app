@@ -9,7 +9,11 @@
         app
         color="grey"
       >
-        <span class="white--text">&copy; 2020 Daniel Roush</span>
+        <span
+          class="white--text"
+        >
+          &copy; 2020 Garcia-Pichel Lab
+        </span>
      </v-footer>
   </v-app>
 </template>

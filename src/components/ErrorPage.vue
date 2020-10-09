@@ -42,7 +42,7 @@
           <p
             class="body-1 red--text text--darken-3"
           >
-            Please contact us at: contact (at) cydrasil (dot) org if you need help troubleshooting a failed run.
+            Please contact us at: <a href="mailto:cydrasil@asu.edu">cydrasil@asu.edu</a> if you need help troubleshooting a failed run.
             <br>
           </p>
         </v-container>

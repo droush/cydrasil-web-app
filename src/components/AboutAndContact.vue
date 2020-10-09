@@ -38,10 +38,10 @@
             <br>
             <ol>
               <li>The sequence must come from an isolated strain or a single-cell genome. Exceptions were made for metagenome-assembled
-                genomes on a case by case basis after manual review of the genome (needed for most sibling clade sequences).</li>
+                genomes on a case by case basis after manual review of the genome.</li>
               <li>Each reference sequence must be 1100 base pairs or longer. The minimum length was chosen as a compromise between
                 strain coverage and sequence information for phylogenetic reconstruction. Of note, this excludes all
-                cyanobacteria sequenced using the <a href="https://aem.asm.org/content/63/8/3327.long" target="_blank">Nübel et al. 1997</a>
+                cyanobacteria sequences obtained with the widely used <a href="https://aem.asm.org/content/63/8/3327.long" target="_blank">Nübel et al. 1997</a>
                 cyanobacteria-specific primers.</li>
             </ol>
             <br>
@@ -84,11 +84,11 @@
             find these "cyanobacteria" in their samples, but they are not the traditional photosynthetic prokaryotes.
             <br>
             <br>
-            The phylum name Cyanobacteria has defined a monophyletic clade of phototrophic prokaryotes that conduct oxygenic
+            The phylum name Cyanobacteria has been formally defined a monophyletic clade of phototrophic prokaryotes that conduct oxygenic
             photosynthesis since the 1970s; the only prokaryotes able to do so. Due to this widely accepted definition, we have
             chosen to classify the new discovered non-phototrophic “cyanobacteria” organisms as sister clades to the Cyanobacteria
-            and have marked them as such in both the database and the tree graphic (Database details). A great discussion about this
-            subject, titled “What's in a name? The case of cyanobacteria” by Garcia-Pichel et al. can be found
+            and have marked them as such in both the database and the tree graphic (Database details). A discussion about this
+            subject, titled “What's in a name? The case of cyanobacteria” can be found
             <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jpy.12934" target="_blank">here</a>.
           </v-card-text>
           <v-card-title>
@@ -98,7 +98,7 @@
             Cydrasil is dependent upon contributions from the scientific community. We originally seeded the database with what we
             felt was a comprehensive snapshot of cyanobacterial diversity, but the amount of available sequences is constantly
             increasing. If you have sequences that you would like to include or your research covers an unrepresented clade, please
-            contact us and we will be sure to include it in the next release.
+            contact us (<a href="mailto:cydrasil@asu.edu">cydrasil@asu.edu</a>) and we will be sure to include it in the next release.
             <br>
             <br>
             Sequences for submission need to be 1100+ base pairs in length and originate from an isolate, a genome, or a metagenome
@@ -108,7 +108,8 @@
             Contact Us
           </v-card-title>
           <v-card-text>
-            If you have any comments, questions or concerns, please feel free to email us at: contact (AT) cydrasil (DOT) org
+            If you have any comments, questions or concerns, please feel free to email us at:
+            <a href="mailto:cydrasil@asu.edu">cydrasil@asu.edu</a>
           </v-card-text>
         </v-card>
       </div>

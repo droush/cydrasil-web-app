@@ -45,7 +45,8 @@ export default {
         { title: 'Place Sequences', icon: 'mdi-string-lights', route: '/place' },
         { title: 'My Placement Runs', icon: 'mdi-run-fast', route: '/MyPlacements' },
         { title: 'Help & FAQ', icon: 'mdi-lifebuoy', route: '/help' },
-        { title: 'About & Contact', icon: 'mdi-information', route: '/about' }
+        { title: 'About & Contact', icon: 'mdi-information', route: '/about' },
+        { title: 'Legal Stuff', icon: 'mdi-newspaper-variant', route: '/terms' }
       ]
     }
   }
