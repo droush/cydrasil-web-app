@@ -16,5 +16,29 @@
                 "cydrasilwebapp9dbd2325": {}
             }
         }
+    },
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cydrasil-web-app-prod-223145-authRole",
+            "UnauthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-prod-223145-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::674066163083:role/amplify-cydrasil-web-app-prod-223145-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-cydrasil-web-app-prod-223145-deployment",
+            "UnauthRoleName": "amplify-cydrasil-web-app-prod-223145-unauthRole",
+            "StackName": "amplify-cydrasil-web-app-prod-223145",
+            "StackId": "arn:aws:cloudformation:us-west-2:674066163083:stack/amplify-cydrasil-web-app-prod-223145/b42c5f60-09f0-11eb-ade5-06f533a6203b",
+            "AmplifyAppId": "d1o527hafm5ll7"
+        },
+        "categories": {
+            "auth": {
+                "cydrasilwebapp9dbd2325": {}
+            },
+            "function": {
+                "cydrasilPlacementWorkflowPY": {},
+                "cydrasilwebapp9dbd2325": {},
+                "cydrasilPlaceFiles": {},
+                "CydrasilWebAppPlacementInfoDB": {}
+            }
+        }
     }
 }
