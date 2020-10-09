@@ -90,6 +90,7 @@ def cleanup():
     #epa-ng placements
     os.system('rm /tmp/placements/epa_info.log')
     os.system('rm /tmp/placements/epa_result.jplace')
+    os.system('rm -r /tmp/placements/')
 
     return
 
