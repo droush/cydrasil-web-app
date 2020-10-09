@@ -166,7 +166,6 @@ export default {
     downloadPlacements (item) {
       Storage.get(item, { level: 'private' })
         .then(result => window.open(result))
-        .catch(err => console.log(err))
     },
     deletePlacementsAsk (item) {
       this.dialog = true
@@ -176,20 +175,16 @@ export default {
       Storage.list('placementFiles/', { level: 'private' })
         .then(result => this.$store.commit('updatePlacementHistory', result))
         .then(result => this.$store.commit('updateMyPlacementsLoaded'))
-        .catch(err => console.log(err))
     },
     deletePlacementRun () {
       Storage.remove(this.itemToDelete.key, { level: 'private' })
-        .then(result => console.log(result))
         .then(result => this.placementListUpdate())
-        .catch(err => console.log(err))
       this.dialog = false
     }
   },
 
   created () {
     this.placementListUpdate()
-    console.log(this.placementRuns)
   },
 
   data () {

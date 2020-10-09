@@ -106,7 +106,6 @@ export default {
   created () {
     Storage.get(this.$store.state.placementInfo.placementResultName, { level: 'private' })
       .then(result => this.$store.commit('updatePlacementResultLink', result))
-      .catch(err => console.log(err))
   },
 
   data () {

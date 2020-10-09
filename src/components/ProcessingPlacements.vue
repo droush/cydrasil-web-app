@@ -62,7 +62,6 @@ export default {
     this.polling = setTimeout(() => {
       Storage.list(this.$store.state.placementInfo.placementResultName, { level: 'private' })
         .then(result => this.checkS3Result(result))
-        .catch(err => console.log(err))
     }, 30000)
   },
 
@@ -79,7 +78,6 @@ export default {
         setTimeout(() => {
           Storage.list(this.$store.state.placementInfo.placementResultName, { level: 'private' })
             .then(result => this.checkS3Result(result))
-            .catch(err => console.log(err))
         }, 30000)
       }
     },
