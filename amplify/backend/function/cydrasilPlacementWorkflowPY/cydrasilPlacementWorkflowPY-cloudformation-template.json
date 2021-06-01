@@ -90,8 +90,8 @@
 				"Runtime": "python3.8",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-cydrasil-web-app-dev-151000-deployment",
-					"S3Key": "amplify-builds/cydrasilPlacementWorkflowPY-45574657714130684232-build.zip"
+					"S3Bucket": "amplify-cydrasil-web-app-prod-223145-deployment",
+					"S3Key": "amplify-builds/cydrasilPlacementWorkflowPY-667a6f57667a4936414c-build.zip"
 				}
 			}
 		},

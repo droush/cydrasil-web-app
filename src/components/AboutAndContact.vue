@@ -55,10 +55,10 @@
             alignment strategy, in which each target sequence is aligned independently to a covariance model that uses the 16S rRNA
             gene secondary structure, and then masked using SSUMASK with the automatically computed alignment confidence values
             (posterior probabilities). A maximum-likelihood phylogenetic tree was then generated using the
-            <a href="https://cme.h-its.org/exelixis/software.html" target="_blank">RAxML-HPC2</a> (8.2.12) Workflow
-            on XSEDE on the <a href="http://www.phylo.org/" target="_blank">CIPRES Science Gateway</a>. The ML + thorough bootstrap
-            workflow was used with the following modified parameters:
-            1000 bootstraps (-N 1000) and the GTRGAMMA model. All other parameters were left at default values.
+            <a href="https://github.com/amkozlov/raxml-ng" target="_blank">RAxML-NG</a> (1.0.1) Workflow
+            on XSEDE on the <a href="http://www.phylo.org/" target="_blank">CIPRES Science Gateway</a>. The run included combined tree search
+            and bootstrapping analysis (--all) using the autoMRE bootstrapping convergence test and a SYM+G4 model determined using
+            <a href="https://github.com/ddarriba/modeltest" target="_blank">modeltest-NG</a>.
             <br>
             <br>
             Cydrasil was created to provide a comprehensive and curated cyanobacterial 16S rRNA gene sequence reference package for

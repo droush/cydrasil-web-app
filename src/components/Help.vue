@@ -40,7 +40,7 @@
             The number in place of the X, following the v is the Cydrasil database version that was used to place your sequences.
             <br>
             <br>
-            <i>Ex. test-run-cy_v2.jplace</i>
+            <i>Ex. test-run-cy_v3.jplace</i>
           </v-card-text>
           <v-card-subtitle
             class="font-weight-medium"

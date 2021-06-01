@@ -34,10 +34,10 @@
           used for the reference package construction.
         </v-card-text>
         <v-card-title class="pt-1 my-0  ">
-          Cydrasil Stats: Version 2
+          Cydrasil Stats: Version 3
         </v-card-title>
         <v-card-subtitle>
-          <b>Total Sequences:</b> 1482 | <b>Cyanobacteria:</b> 1405 | <b>Sibling Clades:</b> 68 | <b>Plastid:</b> 6 | <b>Outgroup:</b> 3
+          <b>Total Sequences:</b> 1327 | <b>Cyanobacteria:</b> 1288 | <b>Sibling Clades:</b> 34 | <b>Plastid:</b> 5
         </v-card-subtitle>
         </v-card>
         <v-container
@@ -65,7 +65,7 @@
               <v-btn
                 color="amber"
                 depressed
-                href="https://itol.embl.de/tree/722012507563761591409018"
+                href="https://itol.embl.de/tree/722013233107271622410676"
                 target="_blank"
               >
                 View Cydrasil on iTOL
@@ -141,6 +141,18 @@
                         >
                           {{ item.dataSourceLink }}
                         </a>
+                        <p>
+                        </p>
+                        <div
+                          class="title grey--text text--darken-3"
+                        >
+                         Cydrasil v2 and earlier sequence ID:
+                        </div>
+                        <p
+                          class="body-1 mb-5 grey--text text--darken-3"
+                        >
+                          {{ item.ogCyName }}
+                        </p>
                         <div
                           class="title grey--text text--darken-3"
                         >
@@ -149,7 +161,7 @@
                         <pre
                           class="grey--text text--darken-3 text-wrap"
                         >
-                          >{{ item.name }}
+                          >{{ item.cyTaxID }}
                           {{ item.sequence }}
                         </pre>
                       </v-card-text>
@@ -166,7 +178,7 @@
 </template>
 
 <script>
-import cydrasilDatabase from '@/assets/cydrasil-files/cydrasil-v2.json'
+import cydrasilDatabase from '@/assets/cydrasil-files/cydrasil-v3-database.json'
 
 export default {
   data () {
@@ -179,7 +191,7 @@ export default {
           text: 'Sequence ID',
           align: 'start',
           sortable: false,
-          value: 'name'
+          value: 'cyTaxID'
         },
         { text: '', value: 'data-table-expand' }
       ]

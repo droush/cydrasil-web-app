@@ -12,7 +12,7 @@
         <span
           class="white--text"
         >
-          &copy; 2020 Garcia-Pichel Lab
+          &copy; 2021 Garcia-Pichel Lab
         </span>
      </v-footer>
   </v-app>
