@@ -35,7 +35,7 @@
           class="grey--text pa-1 text--darken-3"
         >
           The cy_vX code at the end of your filename corresponds to the Cydrasil database version
-          that was used to generate placements, i.e., cy_v2 corresponds to Cydrasil version 2.
+          that was used to generate placements, i.e., cy_v3 corresponds to Cydrasil version 3.
         </v-card-subtitle>
       </v-card>
     </section>

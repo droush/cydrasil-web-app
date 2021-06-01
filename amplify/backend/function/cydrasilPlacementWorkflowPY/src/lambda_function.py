@@ -9,11 +9,11 @@ from urllib.parse import unquote_plus
 os.environ['PATH']
 
 #Set the cydrasil reference database filepaths and core count
-ref_aln_fa = 'cydrasil-v2-aln.afa'
-ref_aln_phy = 'cydrasil-v2-aln.phy'
-ref_tre = 'cydrasil-v2-tree.nwk'
-ref_mdl = 'cydrasil-v2.bestModel' 
-cydrasil_version = '2'
+ref_aln_fa = 'cydrasil-v3-aln.afa'
+ref_aln_phy = 'cydrasil-v3-aln.phy'
+ref_tre = 'cydrasil-v3-tree.nwk'
+ref_mdl = 'cydrasil-v3.bestModel' 
+cydrasil_version = '3'
 cores = '2'
 
 #Set AWS clients
@@ -37,14 +37,14 @@ def move_binaries():
     os.system('chmod 755 /tmp/papara_static_x86_64')
     os.system('chmod 755 /tmp/epa-ng')
 
-    shutil.copy('cydrasil-v2-aln.afa', '/tmp/cydrasil-v2-aln.afa')
-    shutil.copy('cydrasil-v2-aln.phy', '/tmp/cydrasil-v2-aln.phy')
-    shutil.copy('cydrasil-v2-tree.nwk', '/tmp/cydrasil-v2-tree.nwk')
-    shutil.copy('cydrasil-v2.bestModel', '/tmp/cydrasil-v2.bestModel')
-    os.system('chmod 755 /tmp/cydrasil-v2-aln.afa')
-    os.system('chmod 755 /tmp/cydrasil-v2-aln.phy')
-    os.system('chmod 755 /tmp/cydrasil-v2-tree.nwk')
-    os.system('chmod 755 /tmp/cydrasil-v2.bestModel')
+    shutil.copy('cydrasil-v3-aln.afa', '/tmp/cydrasil-v3-aln.afa')
+    shutil.copy('cydrasil-v3-aln.phy', '/tmp/cydrasil-v3-aln.phy')
+    shutil.copy('cydrasil-v3-tree.nwk', '/tmp/cydrasil-v3-tree.nwk')
+    shutil.copy('cydrasil-v3.bestModel', '/tmp/cydrasil-v3.bestModel')
+    os.system('chmod 755 /tmp/cydrasil-v3-aln.afa')
+    os.system('chmod 755 /tmp/cydrasil-v3-aln.phy')
+    os.system('chmod 755 /tmp/cydrasil-v3-tree.nwk')
+    os.system('chmod 755 /tmp/cydrasil-v3.bestModel')
     return
 
 #Creates sub directories for file management and epa-ng output requirement
@@ -61,16 +61,16 @@ def papara_alignment_workflow():
 
     os.chdir('/tmp/')
 
-    os.system('./papara_static_x86_64 -t cydrasil-v2-tree.nwk -s cydrasil-v2-aln.phy -q user_query.fasta -r -n lambda-run')
+    os.system('./papara_static_x86_64 -t cydrasil-v3-tree.nwk -s cydrasil-v3-aln.phy -q user_query.fasta -r -n lambda-run')
 
-    os.system('./epa-ng --split cydrasil-v2-aln.phy papara_alignment.lambda-run')
+    os.system('./epa-ng --split cydrasil-v3-aln.phy papara_alignment.lambda-run')
 
     return
 
 #Placement workflow with .jplace output
 def epa_ng_placement_workflow(placement_directory):
 
-    os.system('./epa-ng -s cydrasil-v2-aln.afa -t cydrasil-v2-tree.nwk -q query.fasta --model cydrasil-v2.bestModel -w placements -T 2')
+    os.system('./epa-ng -s cydrasil-v3-aln.afa -t cydrasil-v3-tree.nwk -q query.fasta --model cydrasil-v3.bestModel -w placements -T 2')
 
     return
 

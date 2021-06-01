@@ -21,7 +21,7 @@
         Current Cydrasil Pipeline Program Versions
       </v-card-title>
       <v-card-text>
-        <b>Cydrasil</b>: 2 |
+        <b>Cydrasil</b>: 3 |
         <a href="https://cme.h-its.org/exelixis/web/software/papara/index.html" target="_blank"><b>PaPaRa</b></a>: 2.5 |
         <a href="https://github.com/Pbdas/epa-ng" target="_blank"><b>EPA-ng</b></a>: 0.3.6 |
         <a href="" target="">What's this?</a>
@@ -302,7 +302,7 @@ export default {
     },
 
     uploadComplete () {
-      this.placementKey = `placementFiles/${this.newFilename.replace('.fasta', `-cy_v2.jplace`)}`
+      this.placementKey = `placementFiles/${this.newFilename.replace('.fasta', `-cy_v3.jplace`)}`
       this.$store.commit('updatePlacementResultName', this.placementKey)
       this.$router.push('Processing')
     }
