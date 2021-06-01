@@ -134,7 +134,7 @@
             5. Root the Cydrasil tree:
           </v-card-text>
           <v-card-text class="ml-3 font-weight-black">
-            Go to the search icon and type Listeria
+            Go to the search icon and type WOR1
           </v-card-text>
           <v-row
             class="d-flex"
@@ -147,7 +147,7 @@
             />
           </v-row>
           <v-card-text class="ml-3 font-weight-black">
-            Click on <i>Listeria monocytogenes</i> to be taken to the node where this sequence is located
+            Click on <b>CY-NCBI-METRO1000...</b> to be taken to the node where this sequenced is located
           </v-card-text>
           <v-row
             class="d-flex"
