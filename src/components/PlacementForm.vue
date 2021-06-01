@@ -231,9 +231,6 @@ export default {
             this.incorrectFileFormat = true
           }
         }
-        reader.onerror = evt => {
-          console.error(evt)
-        }
       }
     },
 
@@ -281,7 +278,6 @@ export default {
           contentType: 'text/plain'
         })
           .then(result => this.uploadComplete())
-          .catch(err => console.log(err))
       } else {
         var blob = new Blob([this.sequenceInput], { type: 'text/plain' })
         var file = new File([blob], this.newFilename, { type: 'text/plain' })
@@ -298,13 +294,9 @@ export default {
               contentType: 'text/plain'
             })
               .then(result => this.uploadComplete())
-              .catch(err => console.log(err))
           } else {
             this.incorrectTextBoxFormat = true
           }
-        }
-        reader.onerror = evt => {
-          console.error(evt)
         }
       }
     },
