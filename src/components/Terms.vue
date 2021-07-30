@@ -10,7 +10,7 @@
           <h1
               class="display-3 grey--text text--darken-3"
           >
-              Legal Stuff
+              Terms of Service
           </h1>
           <v-divider/>
         </v-container>
@@ -25,11 +25,6 @@
           outlined
         >
           <v-divider />
-          <v-card-subtitle
-            class="font-weight-medium"
-          >
-            TERMS OF SERVICE
-          </v-card-subtitle>
           <v-card-text>
             OVERVIEW
             <br>
