@@ -14,7 +14,20 @@
         >
           &copy; 2021 Garcia-Pichel Lab
         </span>
-     </v-footer>
+        <v-spacer/>
+        <span
+          class="white--text">
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><v-img alt="Creative Commons License" style="border-width:5" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+        </span>
+        <v-card
+          elevation="0"
+          color="grey"
+          class="white--text pl-2"
+          href="http://creativecommons.org/licenses/by/4.0/"
+        >
+        CC BY 4.0
+        </v-card>
+      </v-footer>
   </v-app>
 </template>
 
